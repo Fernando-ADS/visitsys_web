@@ -45,9 +45,9 @@ return [
   |
   */
 
-  'logo' => '',
-  'logo_img' => 'vendor/adminlte/dist/img/VisitSys_logo.png',
-  'logo_img_class' => 'brand-image img-square elevation-3',
+  'logo' => 'VisitSys',
+  'logo_img' => 'vendor/adminlte/dist/img/visitSys_icon2.png',
+  'logo_img_class' => 'brand-image img-square',
   'logo_img_xl' => null,
   'logo_img_xl_class' => 'brand-image-xs',
   'logo_img_alt' => 'VisitSys',
@@ -64,7 +64,7 @@ return [
   |
   */
 
-  'usermenu_enabled' => true,
+  'usermenu_enabled' => false,
   'usermenu_header' => false,
   'usermenu_header_class' => 'bg-primary',
   'usermenu_image' => false,
@@ -127,9 +127,9 @@ return [
   'classes_content_wrapper' => '',
   'classes_content_header' => '',
   'classes_content' => '',
-  'classes_sidebar' => 'sidebar-dark-info elevation-4',
+  'classes_sidebar' => 'sidebar-dark-info elevation-2',
   'classes_sidebar_nav' => '',
-  'classes_topnav' => 'navbar-white navbar-light',
+  'classes_topnav' => 'navbar-black navbar-light',
   'classes_topnav_nav' => 'navbar-expand',
   'classes_topnav_container' => 'container',
 
@@ -150,7 +150,7 @@ return [
   'sidebar_collapse_auto_size' => false,
   'sidebar_collapse_remember' => false,
   'sidebar_collapse_remember_no_transition' => true,
-  'sidebar_scrollbar_theme' => 'os-theme-dark',
+  'sidebar_scrollbar_theme' => 'os-theme-light',
   'sidebar_scrollbar_auto_hide' => 'l',
   'sidebar_nav_accordion' => true,
   'sidebar_nav_animation_speed' => 300,
@@ -169,7 +169,7 @@ return [
 
   'right_sidebar' => false,
   'right_sidebar_icon' => 'fas fa-cogs',
-  'right_sidebar_theme' => 'dark',
+  'right_sidebar_theme' => 'success',
   'right_sidebar_slide' => true,
   'right_sidebar_push' => true,
   'right_sidebar_scrollbar_theme' => 'os-theme-light',
@@ -226,17 +226,49 @@ return [
 
   'menu' => [
 
+    // Navbar items:
+
     [
-      'type'         => 'fullscreen-widget',
+      'text' => 'Home',
+      'url'  => 'xxxxxx',
       'topnav_right' => true,
     ],
 
-    // Sidebar items:
     [
-      'text' => 'blog',
-      'url'  => 'admin/blog',
-      'can'  => 'manage-blog',
+      'text' => 'Sobre nós',
+      'url'  => 'xxxxxx',
+      'topnav_right' => true,
     ],
+
+
+    [
+      'text' => 'Fale Conosco',
+      'url'  => 'xxxxxx',
+      'topnav_right' => true,
+    ],
+
+
+
+
+    [
+      'type'         => 'navbar-search',
+      'text'         => 'search',
+      'topnav_right' => true,
+    ],
+    /*
+    [
+    'type'         => 'fullscreen-widget',
+    'topnav_right' => true,
+  ],
+  */
+
+
+  // Sidebar items:
+  [
+    'text' => 'blog',
+    'url'  => 'admin/blog',
+    'can'  => 'manage-blog',
+  ],
 
   ['header' => ''],
 
@@ -253,7 +285,7 @@ return [
   ],
 
   [
-      'text' => 'Recepcionistas',
+    'text' => 'Recepcionistas',
     'url'  => 'recepcionistas',
     'icon' => 'fas fa-address-book',
   ],
@@ -413,19 +445,19 @@ return [
     ],
   ],
   'Sweetalert2' => [
-      'active' => true,
-      'files' => [
-          [
-              'type' => 'js',
-              'asset' => true,
-              'location' => 'vendor/sweetalert2/sweetalert2.min.js',
-          ],
-          [
-              'type' => 'css',
-              'asset' => true,
-              'location' => 'vendor/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css',
-          ],
+    'active' => true,
+    'files' => [
+      [
+        'type' => 'js',
+        'asset' => true,
+        'location' => 'vendor/sweetalert2/sweetalert2.min.js',
       ],
+      [
+        'type' => 'css',
+        'asset' => true,
+        'location' => 'vendor/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css',
+      ],
+    ],
   ],
   'Pace' => [
     'active' => false,
