@@ -34,9 +34,14 @@
         @endempty
 
         {{-- Footer --}}
-        @hasSection('footer')
-            @include('adminlte::partials.footer.footer')
-        @endif
+
+        <footer class="main-footer">
+        <div class="float-right d-none d-sm-inline">
+        v1.0.1
+        </div>
+        <strong>Copyright ©VisitSys | </strong> All rights reserved.
+        </footer>
+
 
         {{-- Right Control Sidebar --}}
         @if(config('adminlte.right_sidebar'))

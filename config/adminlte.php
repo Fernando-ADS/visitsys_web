@@ -48,7 +48,7 @@ return [
   'logo' => 'VisitSys',
   'logo_img' => 'vendor/adminlte/dist/img/visitSys_icon2.png',
   'logo_img_class' => 'brand-image img-square',
-  'logo_img_xl' => null,
+  'logo_img_xl' => 'vendor/adminlte/dist/img/VisitSys_logo.png',
   'logo_img_xl_class' => 'brand-image-xs',
   'logo_img_alt' => 'VisitSys',
 
@@ -85,9 +85,9 @@ return [
 
   'layout_topnav' => null,
   'layout_boxed' => null,
-  'layout_fixed_sidebar' => null,
+  'layout_fixed_sidebar' => true,
   'layout_fixed_navbar' => null,
-  'layout_fixed_footer' => null,
+  'layout_fixed_footer' => true,
   'layout_dark_mode' => null,
 
   /*
@@ -167,9 +167,9 @@ return [
   |
   */
 
-  'right_sidebar' => false,
+  'right_sidebar' => true,
   'right_sidebar_icon' => 'fas fa-cogs',
-  'right_sidebar_theme' => 'success',
+  'right_sidebar_theme' => 'light',
   'right_sidebar_slide' => true,
   'right_sidebar_push' => true,
   'right_sidebar_scrollbar_theme' => 'os-theme-light',
@@ -228,6 +228,7 @@ return [
 
     // Navbar items:
 
+
     [
       'text' => 'Home',
       'url'  => 'xxxxxx',
@@ -247,14 +248,21 @@ return [
       'topnav_right' => true,
     ],
 
-
-
-
     [
       'type'         => 'navbar-search',
-      'text'         => 'search',
-      'topnav_right' => true,
+      'text'         => 'search',        // Placeholder for the underlying input.
+      'topnav_right' => true,            // Or "topnav => true" to place on the left.
+      'url'          => 'navbar/search', // The url used to submit the data ('#' by default).
+      'method'       => 'post',          // 'get' or 'post' ('get' by default).
+      'input_name'   => 'searchVal',     // Name for the underlying input ('adminlteSearch' by default).
+      'id'           => 'navbarSearch'   // ID attribute for the underlying input (optional).
     ],
+
+    [
+      'type'          => 'darkmode-widget' ,
+      'topnav_right' => true , // Ou "topnav => true" para colocar à esquerda.
+    ],
+
     /*
     [
     'type'         => 'fullscreen-widget',
@@ -308,61 +316,69 @@ return [
     'icon' => 'fas fa-fw fa-user-circle',
   ],
 
+
+  /*
   [
-    'text'    => 'multilevel',
-    'icon'    => 'fas fa-fw fa-share',
-    'submenu' => [
-      [
-        'text' => 'level_one',
-        'url'  => '#',
-      ],
-      [
-        'text'    => 'level_one',
-        'url'     => '#',
-        'submenu' => [
-          [
-            'text' => 'level_two',
-            'url'  => '#',
-          ],
-          [
-            'text'    => 'level_two',
-            'url'     => '#',
-            'submenu' => [
-              [
-                'text' => 'level_three',
-                'url'  => '#',
-              ],
-              [
-                'text' => 'level_three',
-                'url'  => '#',
-              ],
-            ],
-          ],
-        ],
-      ],
-      [
-        'text' => 'level_one',
-        'url'  => '#',
-      ],
-    ],
-  ],
-  ['header' => 'labels'],
+  'text'    => 'multilevel',
+  'icon'    => 'fas fa-fw fa-share',
+  'submenu' => [
   [
-    'text'       => 'important',
-    'icon_color' => 'red',
-    'url'        => '#',
-  ],
-  [
-    'text'       => 'warning',
-    'icon_color' => 'green',
-    'url'        => '#',
-  ],
-  [
-    'text'       => 'information',
-    'icon_color' => 'cyan',
-    'url'        => '#',
-  ],
+  'text' => 'level_one',
+  'url'  => '#',
 ],
+[
+'text'    => 'level_one',
+'url'     => '#',
+'submenu' => [
+[
+'text' => 'level_two',
+'url'  => '#',
+],
+[
+'text'    => 'level_two',
+'url'     => '#',
+'submenu' => [
+[
+'text' => 'level_three',
+'url'  => '#',
+],
+[
+'text' => 'level_three',
+'url'  => '#',
+],
+],
+],
+],
+],
+[
+'text' => 'level_one',
+'url'  => '#',
+],
+],
+],
+['header' => 'labels'],
+[
+'text'       => 'important',
+'icon_color' => 'red',
+'url'        => '#',
+],
+[
+'text'       => 'warning',
+'icon_color' => 'green',
+'url'        => '#',
+],
+[
+'text'       => 'information',
+'icon_color' => 'cyan',
+'url'        => '#',
+],
+
+
+*/
+],
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -460,16 +476,16 @@ return [
     ],
   ],
   'Pace' => [
-    'active' => false,
+    'active' => true,
     'files' => [
       [
         'type' => 'css',
-        'asset' => false,
-        'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-center-radar.min.css',
+        'asset' => true,
+        'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/silver/pace-theme-flash.min.css',
       ],
       [
         'type' => 'js',
-        'asset' => false,
+        'asset' => true,
         'location' => '//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/pace.min.js',
       ],
     ],
