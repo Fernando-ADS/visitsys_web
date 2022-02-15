@@ -231,21 +231,21 @@ return [
 
     [
       'text' => 'Home',
-      'url'  => 'xxxxxx',
-      'topnav_right' => true,
+      'url'  => 'home',
+      'topnav' => true,
     ],
 
     [
       'text' => 'Sobre nós',
-      'url'  => 'xxxxxx',
-      'topnav_right' => true,
+      'url'  => 'sobre',
+      'topnav' => true,
     ],
 
 
     [
       'text' => 'Fale Conosco',
       'url'  => 'xxxxxx',
-      'topnav_right' => true,
+      'topnav' => true,
     ],
 
     [
