@@ -231,7 +231,7 @@ return [
 
     [
       'text' => 'Home',
-      'url'  => 'home',
+      'url'  => 'principal',
       'topnav' => true,
     ],
 
@@ -244,7 +244,7 @@ return [
 
     [
       'text' => 'Fale Conosco',
-      'url'  => 'xxxxxx',
+      'url'  => 'faleconosco',
       'topnav' => true,
     ],
 

@@ -34,6 +34,11 @@ Route::get('/sobre', function () {
     return view('sobre');
 });
 
+Route::get('/faleconosco', function () {
+    return view('faleconosco');
+});
+
+
 Route::get('pacientes/search', [App\Http\Controllers\PacienteController::class, 'search'])->name('pacientes.search');
 Route::resource('pacientes', PacienteController::class);
 

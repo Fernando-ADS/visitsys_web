@@ -10,17 +10,17 @@
 
 
 
-  <div class="container">
-    <div class="container-fluid" align="center">
-      <img class="img" src="../../vendor/adminlte/dist/img/VisitSys_logo.png" width="250" alt="logo">
+    <div class="container">
+      <div class="container-fluid" align="center">
+        <img class="img" src="../../vendor/adminlte/dist/img/VisitSys_logo.png" width="250" alt="logo">
+      </div>
+
+      <div class="container-fluid" align="center">
+        xxxxxxxxxxxxxxxxxxxxx
+      </div>
     </div>
 
-    <div class="container-fluid" align="center">
-      xxxxxxxxxxxxxxxxxxxxx
-    </div>
   </div>
-
-</div>
 
 </div>
 
