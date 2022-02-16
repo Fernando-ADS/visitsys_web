@@ -167,7 +167,7 @@ return [
   |
   */
 
-  'right_sidebar' => true,
+  'right_sidebar' => false,
   'right_sidebar_icon' => 'fas fa-cogs',
   'right_sidebar_theme' => 'light',
   'right_sidebar_slide' => true,
@@ -231,7 +231,7 @@ return [
 
     [
       'text' => 'Home',
-      'url'  => 'principal',
+      'url'  => 'home',
       'topnav' => true,
     ],
 
@@ -295,7 +295,7 @@ return [
   [
     'text' => 'Recepcionistas',
     'url'  => 'recepcionistas',
-    'icon' => 'fas fa-address-book',
+    'icon' => 'fas fa-fw fa-address-book',
   ],
 
   [
@@ -307,13 +307,13 @@ return [
   [
     'text' => 'Agendamentos',
     'url'  => 'agendamentos',
-    'icon' => 'fas fa-fw fa-user-circle',
+    'icon' => 'fa fa-fw fa-address-card',
   ],
 
   [
     'text' => 'Visitas',
     'url'  => 'visitas',
-    'icon' => 'fas fa-fw fa-user-circle',
+    'icon' => 'fa fa-fw fa-id-badge',
   ],
 
 
