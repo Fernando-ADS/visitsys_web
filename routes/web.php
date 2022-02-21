@@ -7,6 +7,7 @@ use App\Http\Controllers\VisitaController;
 use App\Http\Controllers\VisitanteController;
 use App\Http\Controllers\RecepcionistaController;
 use App\Http\Controllers\CoordenadorController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +23,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teste', function () {
-    return view('teste');
-});
-
 Route::get('/sobre', function () {
     return view('sobre');
 });
@@ -34,6 +31,9 @@ Route::get('/faleconosco', function () {
     return view('faleconosco');
 });
 
+
+Route::get('users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
+Route::resource('users', UserController::class);
 
 Route::get('pacientes/search', [App\Http\Controllers\PacienteController::class, 'search'])->name('pacientes.search');
 Route::resource('pacientes', PacienteController::class);

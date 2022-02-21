@@ -278,7 +278,22 @@ return [
     'can'  => 'manage-blog',
   ],
 
-  ['header' => ''],
+  ['header' => 'ÁREA DO USUÁRIO'],
+
+  [
+    'text' => 'Meu perfil',
+    'url'  => 'xxxxxxxx',
+    'icon' => 'fas fa-fw fa-user-circle',
+  ],
+
+  ['header' => 'CADASTROS'],
+
+  [
+    'text' => 'Usuários',
+    'url'  => 'users',
+    'icon' => 'fas fa-fw fa-hospital',
+  ],
+
 
   [
     'text' => 'Pacientes',
@@ -302,7 +317,7 @@ return [
   [
     'text' => 'Coordenadores',
     'url'  => 'coordenadors',
-    'icon' => 'fas fa-fw fa-user-circle',
+    'icon' => 'fas fa-fw fa-user-md',
   ],
 
   [
