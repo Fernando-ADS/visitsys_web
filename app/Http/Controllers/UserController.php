@@ -19,7 +19,6 @@ class UserController extends Controller
   */
   public function index()
   {
-    $this->authorize('is_admin');
     $users = User::orderBy('name')->get();
     return view('users.index', ['users' => $users]);
   }
@@ -31,7 +30,6 @@ class UserController extends Controller
   */
   public function create()
   {
-        $this->authorize('is_admin');
   //
   }
 
@@ -43,7 +41,6 @@ class UserController extends Controller
   */
   public function store(StoreUserRequest $request)
   {
-        $this->authorize('is_admin');
   //
   }
 
@@ -55,7 +52,6 @@ class UserController extends Controller
   */
   public function show(User $user)
   {
-        $this->authorize('is_admin');
     return view('users.show', ['user' => $user]);
   }
 
@@ -67,7 +63,6 @@ class UserController extends Controller
   */
   public function edit(User $user)
   {
-        $this->authorize('is_admin');
     return view('users.edit', ['user' => $user]);
   }
 
@@ -80,7 +75,6 @@ class UserController extends Controller
   */
   public function update(UpdateUserRequest $request, User $user)
   {
-        $this->authorize('is_admin');
     $user->fill($request->all());
     $user->save();
 
@@ -99,7 +93,6 @@ class UserController extends Controller
   */
   public function destroy(User $user)
   {
-        $this->authorize('is_admin');
     /*
     if($user->visitas->count()>0 || $user->agendamentos->count()>0){
       session()->flash('mensagem', 'Não é permitido excluir! Existem associacões!');
@@ -115,7 +108,6 @@ class UserController extends Controller
 
   public function search()
   {
-        $this->authorize('is_admin');
     $pesquisa = $_GET['search'];
     $users = user::where('name','LIKE','%'.$pesquisa.'%')->get();
 

@@ -21,38 +21,38 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');
 
 Route::get('/sobre', function () {
     return view('sobre');
-});
+})->middleware('auth');
 
 Route::get('/faleconosco', function () {
     return view('faleconosco');
-});
+})->middleware('auth');
 
 
-Route::get('users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search');
-Route::resource('users', UserController::class);
+Route::get('users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search')->middleware(['auth','check.is.admin']);
+Route::resource('users', UserController::class)->middleware(['auth','check.is.admin']);
 
-Route::get('pacientes/search', [App\Http\Controllers\PacienteController::class, 'search'])->name('pacientes.search');
-Route::resource('pacientes', PacienteController::class);
+Route::get('pacientes/search', [App\Http\Controllers\PacienteController::class, 'search'])->name('pacientes.search')->middleware(['auth','check.is.admin']);
+Route::resource('pacientes', PacienteController::class)->middleware(['auth','check.is.admin']);
 
-Route::get('visitantes/search', [App\Http\Controllers\VisitanteController::class, 'search'])->name('visitantes.search');
-Route::resource('visitantes', VisitanteController::class);
+Route::get('visitantes/search', [App\Http\Controllers\VisitanteController::class, 'search'])->name('visitantes.search')->middleware(['auth','check.is.admin']);
+Route::resource('visitantes', VisitanteController::class)->middleware(['auth','check.is.admin']);
 
-Route::get('recepcionistas/search', [App\Http\Controllers\RecepcionistaController::class, 'search'])->name('recepcionistas.search');
-Route::resource('recepcionistas', RecepcionistaController::class);
+Route::get('recepcionistas/search', [App\Http\Controllers\RecepcionistaController::class, 'search'])->name('recepcionistas.search')->middleware(['auth','check.is.admin']);
+Route::resource('recepcionistas', RecepcionistaController::class)->middleware(['auth','check.is.admin']);
 
-Route::get('coordenadors/search', [App\Http\Controllers\CoordenadorController::class, 'search'])->name('coordenadors.search');
-Route::resource('coordenadors', CoordenadorController::class);
+Route::get('coordenadors/search', [App\Http\Controllers\CoordenadorController::class, 'search'])->name('coordenadors.search')->middleware(['auth','check.is.admin']);
+Route::resource('coordenadors', CoordenadorController::class)->middleware(['auth','check.is.admin']);
 
-Route::get('agendamentos/search', [App\Http\Controllers\AgendamentoController::class, 'search'])->name('agendamentos.search');
-Route::resource('agendamentos', AgendamentoController::class);
+Route::get('agendamentos/search', [App\Http\Controllers\AgendamentoController::class, 'search'])->name('agendamentos.search')->middleware('auth');
+Route::resource('agendamentos', AgendamentoController::class)->middleware('auth');
 
-Route::get('visitas/search', [App\Http\Controllers\VisitaController::class, 'search'])->name('visitas.search');
-Route::resource('visitas', VisitaController::class);
+Route::get('visitas/search', [App\Http\Controllers\VisitaController::class, 'search'])->name('visitas.search')->middleware(['auth','check.is.admin']);
+Route::resource('visitas', VisitaController::class)->middleware(['auth','check.is.admin']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
