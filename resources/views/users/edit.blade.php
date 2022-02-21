@@ -56,9 +56,9 @@
           <i class="fa fa-check" ></i> Atualizar
         </button>
 
-        <button class="btn btn-danger" type="reset" >
-          <i class="fa fa-minus"></i> Limpar
-        </button>
+        <a class="btn btn-secondary" role="button" href="{{route('users.index')}}">
+          <i class="fa fa-arrow-left"></i> Voltar
+        </a>
       </div>
 
     </div>
