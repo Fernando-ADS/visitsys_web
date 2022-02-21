@@ -292,6 +292,7 @@ return [
     'text' => 'Usuários',
     'url'  => 'users',
     'icon' => 'fas fa-fw fa-hospital',
+    'can'  => 'is_admin',
   ],
 
 
@@ -300,24 +301,28 @@ return [
     'url'  => 'pacientes',
     'icon' => 'fas fa-fw fa-user',
     'can'  => 'is_admin',
+
   ],
 
   [
     'text' => 'Visitantes',
     'url'  => 'visitantes',
     'icon' => 'fas fa-fw fa-users',
+    'can'  => 'is_admin',
   ],
 
   [
     'text' => 'Recepcionistas',
     'url'  => 'recepcionistas',
     'icon' => 'fas fa-fw fa-address-book',
+    'can'  => 'is_admin',
   ],
 
   [
     'text' => 'Coordenadores',
     'url'  => 'coordenadors',
     'icon' => 'fas fa-fw fa-user-md',
+    'can'  => 'is_admin',
   ],
 
   [
@@ -330,6 +335,7 @@ return [
     'text' => 'Visitas',
     'url'  => 'visitas',
     'icon' => 'fa fa-fw fa-id-badge',
+    'can'  => 'is_admin',
   ],
 
 

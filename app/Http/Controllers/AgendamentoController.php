@@ -17,9 +17,11 @@ class AgendamentoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+
     public function index()
     {
-      $this->authorize('is_admin');
       $agendamentos = Agendamento::orderBy('id')->get();
       return view('agendamentos.index', ['agendamentos' => $agendamentos]);
     }

@@ -4,7 +4,10 @@
 
 @section('content')
 
+<!--
 @can('is_admin')
+@endcan
+-->
 
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -43,7 +46,7 @@
     </a>
   </div>
 
-@endcan
+
 
 @stop
 
