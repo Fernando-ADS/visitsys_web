@@ -284,6 +284,7 @@ return [
     'text' => 'Pacientes',
     'url'  => 'pacientes',
     'icon' => 'fas fa-fw fa-user',
+    'can'  => 'is_admin',
   ],
 
   [

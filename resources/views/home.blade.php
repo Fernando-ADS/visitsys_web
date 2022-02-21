@@ -3,6 +3,9 @@
 @section('title', 'VisitSys')
 
 @section('content')
+
+@can('is_admin')
+
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -39,6 +42,9 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+
+@endcan
+
 @stop
 
 @section('css')
