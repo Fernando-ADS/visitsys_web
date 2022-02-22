@@ -282,7 +282,7 @@ return [
 
   [
     'text' => 'Meu perfil',
-    'url'  => 'xxxxxxxx',
+    'url'  => 'meuperfil',
     'icon' => 'fas fa-fw fa-user-circle',
   ],
 

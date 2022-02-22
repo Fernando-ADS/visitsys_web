@@ -31,6 +31,9 @@ Route::get('/faleconosco', function () {
     return view('faleconosco');
 })->middleware('auth');
 
+Route::get('/meuperfil', function () {
+    return view('meuperfil');
+})->middleware('auth');
 
 Route::get('users/search', [App\Http\Controllers\UserController::class, 'search'])->name('users.search')->middleware(['auth','check.is.admin']);
 Route::resource('users', UserController::class)->middleware(['auth','check.is.admin']);
