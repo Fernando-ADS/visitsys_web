@@ -7,6 +7,7 @@ use App\Models\Coordenador;
 use App\Models\Paciente;
 use App\Models\Recepcionista;
 use App\Models\Visitante;
+use App\Models\Visita;
 use App\Http\Requests\StoreAgendamentoRequest;
 use App\Http\Requests\UpdateAgendamentoRequest;
 
@@ -84,14 +85,61 @@ class AgendamentoController extends Controller
      * @param  \App\Models\Agendamento  $agendamento
      * @return \Illuminate\Http\Response
      */
+
+     /*
+     public function createVisita()
+     {
+       $pacientes = Paciente::get();
+       $visitantes = Visitante::get();
+       $visitas = Visita::get();
+     }
+     */
+
     public function update(UpdateAgendamentoRequest $request, Agendamento $agendamento)
     {
       $agendamento->fill($request->all());
       $agendamento->save();
 
+      /*
+      * Options value
+      * 1 - Solicitado / 2 - Aprovado / 3 - Negado
+      */
+
+      $status_visita = $request->input('status_agendamento');
+
+      //se o agendamento for aprovado, cria uma nova visita com os mesmos dados
+      if ($status_visita == '2') {
+        //dd($request->input());
+        //Model Visita
+
+        $paciente_id = $request->input('paciente_id');
+        $visitante_id = $request->input('visitante_id');
+        $data_visita = $request->input('data_agendamento');
+        $hora_visita = $request->input('hora_agendamento');
+
+        /*
+        $nova_visita = new Visita();
+        Visita::create([$paciente_id, $status_visita,  $visitante_id, $data_visita, $hora_visita]);
+        */
+
+        $nova_visita = new Visita();
+        $nova_visita->fill(array('status_visita'=>$status_visita, 'paciente_id'=>$paciente_id, 'visitante_id'=>$visitante_id, 'data_visita'=>$data_visita,'hora_visita'=>$hora_visita));
+        //dd($nova_visita);
+        $nova_visita->save();
+
+
+
+        /*
+        $nova_visita = new Visita();
+        $nova_visita->fill([$status_visita, $paciente_id, $visitante_id, $data_visita, $hora_visita]);
+        $nova_visita->save();
+        */
+
+      }
       session()->flash('mensagem', 'Atualizado com sucesso!');
       return redirect()->route('agendamentos.index');
     }
+
 
     /**
      * Remove the specified resource from storage.

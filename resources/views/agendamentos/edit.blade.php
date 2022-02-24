@@ -121,35 +121,28 @@
           </select>
         </div>
 
-
-
-
-
-
-
-
         <!--
         <div class="col-sm-6">
-          <label for="hora_agendamento" id="labelHora">Hora:</label>
-          <input type="time" name="hora_agendamento" id="hora_agendamento" value="{{$agendamento->hora_agendamento}}" class="form-control" required>
-        </div>
-      -->
+        <label for="hora_agendamento" id="labelHora">Hora:</label>
+        <input type="time" name="hora_agendamento" id="hora_agendamento" value="{{$agendamento->hora_agendamento}}" class="form-control" required>
       </div>
-
-      <br>
-
-      <div class="form-group">
-        <div>
-          <button class="btn btn-info" type="submit">
-            <i class="fa fa-plus"></i> Atualizar
-          </button>
-
-          <button class="btn btn-danger" role="button" href="{{route('agendamentos.index')}}">
-            <i class="fa fa-times"></i> Cancelar
-          </button>
-        </div>
-      </div>
-    </form>
+    -->
   </div>
 
-  @endsection
+  <br>
+
+  <div class="form-group">
+    <div>
+      <button class="btn btn-info" type="submit">
+        <i class="fa fa-plus"></i> Atualizar
+      </button>
+
+      <button class="btn btn-danger" role="button" href="{{route('agendamentos.index')}}">
+        <i class="fa fa-times"></i> Cancelar
+      </button>
+    </div>
+  </div>
+</form>
+</div>
+
+@endsection
