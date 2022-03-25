@@ -10,6 +10,8 @@ use App\Models\Visitante;
 use App\Models\Visita;
 use App\Http\Requests\StoreAgendamentoRequest;
 use App\Http\Requests\UpdateAgendamentoRequest;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 class AgendamentoController extends Controller
 {
@@ -126,8 +128,6 @@ class AgendamentoController extends Controller
         $nova_visita->fill(array('status_visita'=>$status_visita, 'paciente_id'=>$paciente_id, 'visitante_id'=>$visitante_id, 'data_visita'=>$data_visita,'hora_visita'=>$hora_visita));
         //dd($nova_visita);
         $nova_visita->save();
-
-
 
         /*
         $nova_visita = new Visita();

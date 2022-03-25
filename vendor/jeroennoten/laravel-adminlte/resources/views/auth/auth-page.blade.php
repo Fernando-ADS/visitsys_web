@@ -1,5 +1,5 @@
 @extends('adminlte::master')
-  <link rel="stylesheet" href="../../vendor/adminlte/dist/css/fundo.css">
+
 @php( $dashboard_url = View::getSection('dashboard_url') ?? config('adminlte.dashboard_url', 'home') )
 
 @if (config('adminlte.use_route_url', false))
@@ -16,12 +16,13 @@
 @section('classes_body'){{ ($auth_type ?? 'login') . '-page' }}@stop
 
 @section('body')
-    <div id="body" class="{{ $auth_type ?? 'login' }}-box" >
+    <div class="{{ $auth_type ?? 'login' }}-box">
+
         {{-- Logo --}}
         <div class="{{ $auth_type ?? 'login' }}-logo">
             <a href="{{ $dashboard_url }}">
-                <img src="vendor/adminlte/dist/img/VisitSys_logo.png" height="50">
-                {!! config('adminlte.logo') !!}
+                <img src="{{ asset(config('adminlte.logo_img')) }}" height="50">
+                {!! config('adminlte.logo', '<b>Admin</b>LTE') !!}
             </a>
         </div>
 

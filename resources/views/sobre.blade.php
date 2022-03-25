@@ -16,6 +16,9 @@
       </div>
 
       <div class="container-fluid" align="center">
+        <!--
+        {{QrCode::generate('Testtttttte')}}
+      -->
         xxxxxxxxxxxxxxxxxxxxx
       </div>
     </div>
