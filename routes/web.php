@@ -23,6 +23,19 @@ Route::get('/', function () {
     return view('welcome');
 })->middleware('auth');
 
+
+
+Route::get('/mail', function () {
+    Mail::send('email.enviaEmail', ['curso'=>'Eloquent'], function($testa){
+        $testa->from('visitsys.gestao@gmail.com','VisitSys | Gestão Hospitalar');
+        $testa->to('fernando.aparecido@aluno.ufop.edu.br');
+        $testa->subject('Resultado do Agendamento');
+    });
+});
+
+
+
+
 Route::get('/sobre', function () {
     return view('sobre');
 })->middleware('auth');

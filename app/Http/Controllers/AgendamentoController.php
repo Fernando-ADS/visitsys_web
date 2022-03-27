@@ -129,6 +129,12 @@ class AgendamentoController extends Controller
         //dd($nova_visita);
         $nova_visita->save();
 
+
+        //Envia email para o visitante com o QR Code
+
+
+
+
         /*
         $nova_visita = new Visita();
         $nova_visita->fill([$status_visita, $paciente_id, $visitante_id, $data_visita, $hora_visita]);
