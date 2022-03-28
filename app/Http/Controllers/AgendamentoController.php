@@ -134,8 +134,7 @@ class AgendamentoController extends Controller
         Visita::create([$paciente_id, $status_visita,  $visitante_id, $data_visita, $hora_visita]);
         */
 
-
-        //Envia email para o visitante com o QR Code
+        //Pega o email do visitante correspondente
         $visitantes = Visitante::get();
         $email_visitante = null;
         foreach($visitantes as $e){
@@ -144,17 +143,8 @@ class AgendamentoController extends Controller
             }
         }
 
-        /*
-        Mail::send('email.visitaConfirmada', ['curso'=>'Eloquent'], function($mensagem){
-            $mensagem->from('visitsys.gestao@gmail.com','VisitSys | Gestão Hospitalar');
-            $mensagem->to($em, $ems);
-            $mensagem->subject('Resultado do Agendamento');
-        });
-        */
-
-        //dd($email_visitante);
-
-        Mail::send('email.visitaConfirmada', ['curso'=>'Eloquent'], function($mensagem) use ($email_visitante){
+        //Envia email para o visitante com o QR Code
+        Mail::send('email.visitaConfirmada', ['data_visita'=>$data_visita, 'hora_visita'=>$hora_visita], function($mensagem) use ($email_visitante, $data_visita, $hora_visita){
             $mensagem->from('visitsys.gestao@gmail.com','VisitSys | Gestão Hospitalar');
             $mensagem->to($email_visitante);
             $mensagem->subject('Resultado do Agendamento');
@@ -164,6 +154,15 @@ class AgendamentoController extends Controller
 
 
       }
+
+
+      //se o agendamento não for aprovado, envia email avisando que foi negado
+      /*
+      if ($status_visita == '1') {
+
+      }
+      */
+
       session()->flash('mensagem', 'Atualizado com sucesso!');
       return redirect()->route('agendamentos.index');
     }
