@@ -25,14 +25,15 @@ Route::get('/', function () {
 
 
 
+/*
 Route::get('/mail', function () {
-    Mail::send('email.enviaEmail', ['curso'=>'Eloquent'], function($testa){
-        $testa->from('visitsys.gestao@gmail.com','VisitSys | Gestão Hospitalar');
-        $testa->to('fernando.aparecido@aluno.ufop.edu.br');
-        $testa->subject('Resultado do Agendamento');
+    Mail::send('email.enviaEmail', ['curso'=>'Eloquent'], function($mensagem){
+        $mensagem->from('visitsys.gestao@gmail.com','VisitSys | Gestão Hospitalar');
+        $mensagem->to('fernando.aparecido@aluno.ufop.edu.br');
+        $mensagem->subject('Resultado do Agendamento');
     });
 });
-
+*/
 
 
 
