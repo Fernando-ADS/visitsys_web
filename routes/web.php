@@ -34,8 +34,11 @@ Route::get('/mail', function () {
   });
 });
 */
-
-
+/*
+Route::get('/maile', function () {
+    return view('email.visitaConfirmada');
+});
+*/
 
 Route::get('/sobre', function () {
     return view('sobre');
