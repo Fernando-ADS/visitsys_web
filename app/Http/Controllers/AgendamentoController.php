@@ -149,19 +149,29 @@ class AgendamentoController extends Controller
             $mensagem->to($email_visitante);
             $mensagem->subject('Resultado do Agendamento');
         });
-
-
-
-
       }
 
 
       //se o agendamento não for aprovado, envia email avisando que foi negado
-      /*
-      if ($status_visita == '1') {
+      if ($status_visita == '3') {
 
+        //Pega o email do visitante correspondente
+        $visitante_id = $request->input('visitante_id');
+        $visitantes = Visitante::get();
+        $email_visitante = null;
+        foreach($visitantes as $e){
+            if($e->id == $visitante_id){
+              $email_visitante = $e->email;
+            }
+        }
+
+        Mail::send('email.visitaNegada', [], function($mensagem) use ($email_visitante){
+            $mensagem->from('visitsys.gestao@gmail.com','VisitSys | Gestão Hospitalar');
+            $mensagem->to($email_visitante);
+            $mensagem->subject('Resultado do Agendamento');
+        });
       }
-      */
+
 
       session()->flash('mensagem', 'Atualizado com sucesso!');
       return redirect()->route('agendamentos.index');

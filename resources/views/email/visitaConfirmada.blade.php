@@ -1,4 +1,3 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -7,6 +6,10 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
 
   <style type="text/css">
 
@@ -77,7 +80,7 @@
             <td align="center"  bgcolor="#343e9e" class="container-padding">
               <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="row" width="580" style="width:580px;max-width:580px;">
                 <tr>
-                  <td height="40" style="font-size:40px;line-height:40px;" >&nbsp;</td>
+                  <td height="10  " style="font-size:40px;line-height:40px;" >&nbsp;</td>
                 </tr>
                 <tr  >
                   <td align="center">
@@ -85,9 +88,11 @@
                       <tr>
                         <td align="center" class="container-padding">
                           <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="row" width="280" style="width:280px;max-width:280px;">
-                            <tr >
-                              <td align="center" class="center-text">
-                                <a><img style="width:120px;border:0px;display: inline!important;" src="../../vendor/adminlte/dist/img/visitsys_icon2.png" width="280" border="0" alt="logo"></a>
+                            <tr  >
+                              <td class="center-text"  align="center" style="font-family:'Poppins',Helvetica,serif;font-size:15px;line-height:26px;font-weight:300;font-style:normal;color:#FFFFFF;text-decoration:none;letter-spacing:0px;">
+                                <div  >
+                                  Resultado do agendamento
+                                </div>
                               </td>
                             </tr>
                           </table>
@@ -97,19 +102,13 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="center-text"  align="center" style="font-family:'Roboto Slab',sans-serif;font-size:42px;line-height:52px;font-weight:400;font-style:normal;color:#FFFFFF;text-decoration:none;letter-spacing:0px;">
+                  <td class="center-text"  align="center" style="font-family:'Roboto Slab',Helvetica,serif;font-size:42px;line-height:52px;font-weight:400;font-style:normal;color:#FFFFFF;text-decoration:none;letter-spacing:0px;">
                     <div  >
                       Visita Confirmada
                     </div>
                   </td>
                 </tr>
-                <tr  >
-                  <td class="center-text"  align="center" style="font-family:'Poppins',Arial,Helvetica,sans-serif;font-size:16px;line-height:26px;font-weight:300;font-style:normal;color:#FFFFFF;text-decoration:none;letter-spacing:0px;">
-                    <div  >
-                      Resultado do agendamento
-                    </div>
-                  </td>
-                </tr>
+
                 <tr>
                   <td height="40" style="font-size:40px;line-height:40px;" >&nbsp;</td>
                 </tr>
@@ -118,7 +117,9 @@
                     <table border="0" cellspacing="0" cellpadding="0" role="presentation" align="center" class="center-float">
                       <tr>
                         <td align="center" bgcolor="#b7e04e" style="border-radius: 6px;">
-                          <a href="{{'http://127.0.0.1:8000/login'}}" target="_blank"    style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:16px;line-height:19px;font-weight:700;font-style:normal;color:#000000;text-decoration:none;letter-spacing:0px;padding: 20px 50px 20px 50px;display: inline-block;"><span>Ir para o site</span></a>
+                          <a href="{{'http://127.0.0.1:8000/login'}}" target="_blank"
+                          style="font-family:'Roboto Slab',Helvetica,sans-serif;font-size:16px;line-height:19px;font-weight:700;font-style:normal;color:#000000;text-decoration:none;letter-spacing:0px;padding: 20px 50px 20px 50px;display: inline-block;">
+                          <span>Ir para o site</span></a>
                         </td>
                       </tr>
                     </table>
@@ -169,14 +170,11 @@
                   <td height="20" style="font-size:50px;line-height:10px;" >&nbsp;</td>
                 </tr>
                 <tr>
-                  <td class="center-text"  align="center" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:32px;line-height:42px;font-weight:400;font-style:normal;color:#282828;text-decoration:none;letter-spacing:0px;">
+                  <td class="center-text"  align="center" style="font-family:'Roboto Slab',Helvetica,serif;font-size:28px;line-height:42px;font-weight:400;font-style:normal;color:#282828;text-decoration:none;letter-spacing:0px;">
                     <div  >
                       Detalhes:
                     </div>
                   </td>
-                </tr>
-                <tr>
-                  <td height="30" style="font-size:30px;line-height:30px;" >&nbsp;</td>
                 </tr>
                 <tr>
                   <td align="center">
@@ -185,7 +183,7 @@
                         <td align="center">
                           <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="480" style="width:480px;max-width:480px;">
                             <tr  >
-                              <td class="center-text"  align="left" style="font-family:'Roboto Slab',Arial,Helvetica,sans-serif;font-size:20px;line-height:28px;font-weight:400;font-style:normal;color:#282828;text-decoration:none;letter-spacing:0px;">
+                              <td class="center-text"  align="left" style="font-family:'Roboto Slab',Helvetica,serif;font-size:18px;line-height:28px;font-weight:400;font-style:normal;color:#000;text-decoration:none;letter-spacing:0px;">
                                 <div  >
                                   Data: {{$data_visita}}
                                 </div>
@@ -207,19 +205,6 @@
                 </tr>
               </table>
             </td>
-          </tr>
-        </table>
-
-        <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="width:100%;max-width:100%;" >
-          <tr>
-            <td align="center"  bgcolor="#FFFFFF" class="container-padding">
-              <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="row" width="580" style="width:580px;max-width:580px;">
-                <tr>
-                  <td height="50" style="font-size:15px;line-height:15px;" ></td>
-                </tr>
-              </table>
-            </td>
-
           </tr>
         </table>
 
