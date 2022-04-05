@@ -40,6 +40,12 @@ Route::get('/maile', function () {
 });
 */
 
+
+Route::get('/qrcode', function () {
+    return view('qrcode');
+});
+
+
 Route::get('/sobre', function () {
     return view('sobre');
 })->middleware('auth');

@@ -123,16 +123,7 @@ class AgendamentoController extends Controller
         $nova_visita = new Visita();
         $nova_visita->fill(array('status_visita'=>$status_visita, 'paciente_id'=>$paciente_id, 'visitante_id'=>$visitante_id, 'data_visita'=>$data_visita,'hora_visita'=>$hora_visita));
         $nova_visita->save();
-        /*
-        $nova_visita = new Visita();
-        $nova_visita->fill([$status_visita, $paciente_id, $visitante_id, $data_visita, $hora_visita]);
-        $nova_visita->save();
-        */
 
-        /*
-        $nova_visita = new Visita();
-        Visita::create([$paciente_id, $status_visita,  $visitante_id, $data_visita, $hora_visita]);
-        */
 
         //Pega o email do visitante correspondente
         $visitantes = Visitante::get();
@@ -143,11 +134,19 @@ class AgendamentoController extends Controller
             }
         }
 
+
+        //Gera o QR Code com id da visita e salva na pasta
+        $id_visita = $nova_visita->id;
+        QrCode::size(200)->generate('qrrrrrrrrr','../resources/qrcodes/qrcode_visita_'.$id_visita.'.png');
+
+
+
         //Envia email para o visitante com o QR Code
-        Mail::send('email.visitaConfirmada', ['data_visita'=>$data_visita, 'hora_visita'=>$hora_visita], function($mensagem) use ($email_visitante, $data_visita, $hora_visita){
+        Mail::send('email.visitaConfirmada', ['data_visita'=>$data_visita, 'hora_visita'=>$hora_visita], function($mensagem) use ($email_visitante, $data_visita, $hora_visita, $id_visita){
             $mensagem->from('visitsys.gestao@gmail.com','VisitSys | Gestão Hospitalar');
             $mensagem->to($email_visitante);
             $mensagem->subject('Resultado do Agendamento');
+            $mensagem->attach('../resources/qrcodes/qrcode_visita_'.$id_visita.'.png');
         });
       }
 
