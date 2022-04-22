@@ -11,6 +11,7 @@ use App\Models\Visita;
 use App\Models\User;
 use App\Http\Requests\StoreAgendamentoRequest;
 use App\Http\Requests\UpdateAgendamentoRequest;
+use App\Http\Requests\AjaxAgendamentoRequest;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use Illuminate\Support\Facades\Mail;
@@ -201,5 +202,29 @@ class AgendamentoController extends Controller
       return view('agendamentos.search', compact('agendamentos'));
     }
 
+
+    public function procuraPaciente(AjaxAgendamentoRequest $request){
+      $pacientes = Paciente::all();
+      //$dados = $request->except('_token');
+      //$pega = json_decode($dados->getContent(),true);
+      //$jsonDecode = json_decode($dados);
+      $inputPac = ($request->nome_paciente);
+
+      foreach ($pacientes as $p) {
+        if($inputPac == $p->nome){
+          //var_dump('sucesso');
+          $idPac['success'] = true;
+          $idPac['id'] = $p->id;
+          $retorno = json_encode($idPac);
+          return($retorno);
+        }
+      }
+
+      $idPac['success'] = false;
+      $idPac['id'] = null;
+      $retorno = json_encode($idPac);
+      return($retorno);
+
+    }
 
 }

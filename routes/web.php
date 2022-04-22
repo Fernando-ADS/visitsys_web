@@ -38,12 +38,12 @@ Route::get('/mail', function () {
 Route::get('/maile', function () {
     return view('email.visitaConfirmada');
 });
-*/
 
 
 Route::get('/qrcode', function () {
     return view('qrcode');
 });
+*/
 
 
 Route::get('/sobre', function () {
@@ -75,6 +75,8 @@ Route::resource('coordenadors', CoordenadorController::class)->middleware(['auth
 
 Route::get('agendamentos/search', [App\Http\Controllers\AgendamentoController::class, 'search'])->name('agendamentos.search')->middleware('auth');
 Route::resource('agendamentos', AgendamentoController::class)->middleware('auth');
+Route::post('agendamentos/procuraPaciente', [App\Http\Controllers\AgendamentoController::class, 'procuraPaciente'])->name('agendamentos.procuraPaciente')->middleware('auth');
+
 
 Route::get('visitas/search', [App\Http\Controllers\VisitaController::class, 'search'])->name('visitas.search')->middleware(['auth','check.is.admin']);
 Route::resource('visitas', VisitaController::class)->middleware(['auth','check.is.admin']);
