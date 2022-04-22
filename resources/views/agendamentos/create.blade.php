@@ -18,7 +18,7 @@
 
 
   <div class="container-fluid">
-    <form class="container-fluid " action="{{route('agendamentos.store')}}" method="post" name="formAgendamento">
+    <form class="container-fluid " action="{{route('agendamentos.store')}}" method="post" name="formAgendamento" id="formAgendamento">
 
       @csrf
 
@@ -62,12 +62,17 @@
 
         @can('is_user')
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-6">
             <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
-            <input type="text" name="paciente_id" id="paciente_id" value="" class="form-control" required>
+            <input type="text" name="inputPacInvi" id="inputPacInvi" value="" class="form-control" required placeholder="Digite o nome do paciente e clique no botão">
+          </div>
 
-            <button type="button" name="validaPaciente" class="" id="validaPaciente">Pesquisar</button>
-
+          <div class="col-sm-6">
+            <label id="val" style="color:white">:</label>
+            <br>
+            <button type="button" name="validaPaciente" class="btn btn-success" id="validaPaciente">
+              <i class="fa fa-check"></i>
+            </button>
           </div>
           @endcan
 
@@ -75,11 +80,16 @@
 
           <script type="text/javascript">
           $.ajaxSetup({
-              headers: {
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-              }
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
           });
           </script>
+
+          @can('is_user')
+
+          <input type="hidden" name="paciente_id" id="paciente_id" value="" class="form-control" required>
+          @endcan
 
 
 
@@ -88,9 +98,7 @@
           $(function(){
             $(document).on("click", "#validaPaciente", function(event){
               event.preventDefault();
-              var inputPaciente =  $('#paciente_id').val();
-              //alert(inputPaciente);
-              //console.log('entrei');
+              var inputPaciente =  $('#inputPacInvi').val();
 
               $.ajax({
                 url: "{{route('agendamentos.procuraPaciente')}}",
@@ -102,10 +110,14 @@
                 dataType: 'json',
                 success: function(response){
                   if(response.success === true){
-                      alert('veio do controller' + response.id);
+                    alert('Paciente encontrado!');
+                    paciente_id.value = response.id;
+                    //$("#formAgendamento").submit();
                   }
                   else {
                     alert('Paciente não encontrado!');
+                    paciente_id.value = null;
+                    inputPacInvi.value = null;
                   }
                 }
               });
@@ -113,7 +125,6 @@
           });
           </script>
           @endcan
-
 
 
           <!--
@@ -181,10 +192,10 @@
       <option value="7">17:00</option>
     </select>
   </div>
-
-
-
 </div>
+
+
+
 <br>
 
 

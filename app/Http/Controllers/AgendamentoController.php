@@ -205,9 +205,6 @@ class AgendamentoController extends Controller
 
     public function procuraPaciente(AjaxAgendamentoRequest $request){
       $pacientes = Paciente::all();
-      //$dados = $request->except('_token');
-      //$pega = json_decode($dados->getContent(),true);
-      //$jsonDecode = json_decode($dados);
       $inputPac = ($request->nome_paciente);
 
       foreach ($pacientes as $p) {
