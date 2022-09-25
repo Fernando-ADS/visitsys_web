@@ -55,6 +55,9 @@
             <tr>
               <th>Nome</th>
               <th>Email</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+              <th>Endereço</th>
               <th>Perfil</th>
               <th>Editar</th>
             </tr>
@@ -64,6 +67,9 @@
             <tr>
               <td>{{$e->name}}</td>
               <td>{{$e->email}}</td>
+              <td>{{$e->cpf}}</td>
+              <td>{{$e->telefone}}</td>
+              <td>{{$e->endereco}}</td>
               <td>{{$e->tipo}}</td>
               <td >
                 <a href="{{route('users.edit', $e->id)}}">

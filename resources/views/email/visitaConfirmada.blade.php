@@ -192,9 +192,7 @@
                                   Horário: {{$horario}}
                                 </div>
 
-                                <div  >
-                                  Ala: xxxxx
-                                </div>
+                        
                               </td>
                             </tr>
                           </table>

@@ -17,13 +17,13 @@ class CreateVisitasTable extends Migration
           $table->id();
           $table->string('status_visita')->default("Solicitado");
           $table->unsignedBigInteger('paciente_id');
-          $table->unsignedBigInteger('visitante_id');
+          $table->unsignedBigInteger('user_id');
           $table->date('data_visita');
           $table->time('hora_visita');
           $table->timestamps();
 
           $table->foreign('paciente_id')->references('id')->on('pacientes');
-          $table->foreign('visitante_id')->references('id')->on('visitantes');
+          $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

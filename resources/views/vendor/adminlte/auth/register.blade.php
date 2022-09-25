@@ -53,6 +53,8 @@
             @enderror
         </div>
 
+
+        
         {{-- Password field --}}
         <div class="input-group mb-3">
             <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
@@ -70,6 +72,8 @@
                 </span>
             @enderror
         </div>
+
+
 
         {{-- Confirm password field --}}
         <div class="input-group mb-3">
@@ -89,6 +93,69 @@
                 </span>
             @enderror
         </div>
+
+
+
+
+        {{-- CPF --}}
+        <div class="input-group mb-3">
+            <input type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror"
+                   placeholder="CPF">
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+
+
+        {{-- Telefone --}}
+        <div class="input-group mb-3">
+            <input type="number" name="telefone" class="form-control @error('telefone') is-invalid @enderror"
+                   placeholder="Telefone">
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
+
+
+
+        {{-- Endereço --}}
+        <div class="input-group mb-3">
+            <input type="text" name="endereco" class="form-control @error('endereco') is-invalid @enderror"
+                   placeholder="Endereço">
+
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
+                </div>
+            </div>
+
+            @error('password')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
 
         {{-- Register button --}}
         <button type="submit" class="btn btn-block {{ config('adminlte.classes_auth_btn', 'btn-flat btn-primary') }}">

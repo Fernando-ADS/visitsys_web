@@ -74,7 +74,7 @@
 
                 @endif</td>
               <td>{{$e->paciente->nome}}</td>
-              <td>{{$e->visitante->nome}}</td>
+              <td>{{$e->user->name}}</td>
               <td>{{$e->data_visita}}</td>
               <td>{{$e->hora_visita}}</td>
 

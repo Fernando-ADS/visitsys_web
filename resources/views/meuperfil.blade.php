@@ -31,7 +31,16 @@
                           <b>Perfil</b> <a class="float-right">{{ Auth::user()->tipo }}</a>
                       </li>
                       <li class="list-group-item">
-                          <b>E-mail</b> <a class="float-right">{{ Auth::user()->email }}</a>
+                          <b>CPF</b> <a class="float-right">{{ Auth::user()->cpf }}</a>
+                      </li>
+                      <li class="list-group-item">
+                          <b>Email</b> <a class="float-right">{{ Auth::user()->email }}</a>
+                      </li>
+                      <li class="list-group-item">
+                          <b>Telefone</b> <a class="float-right">{{ Auth::user()->telefone }}</a>
+                      </li>
+                      <li class="list-group-item">
+                          <b>Endereço</b> <a class="float-right">{{ Auth::user()->endereco }}</a>
                       </li>
                       <li class="list-group-item">
                           <b>Status</b> <a class="float-right">{{ 'Ativo' }}</a>

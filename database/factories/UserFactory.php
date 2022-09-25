@@ -22,7 +22,11 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => bcrypt($email), // password
             'tipo' => $this->getTipo(),
+            'cpf' => $this->faker->ean8(),
+            'telefone' => $this->faker->phoneNumber(),
+            'endereco' => $this->faker->streetName(),
             'remember_token' => Str::random(10),
+            
         ];
     }
 

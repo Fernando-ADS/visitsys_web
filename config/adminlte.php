@@ -248,6 +248,7 @@ return [
       'topnav' => true,
     ],
 
+    /*
     [
       'type'         => 'navbar-search',
       'text'         => 'search',        // Placeholder for the underlying input.
@@ -257,7 +258,8 @@ return [
       'input_name'   => 'searchVal',     // Name for the underlying input ('adminlteSearch' by default).
       'id'           => 'navbarSearch'   // ID attribute for the underlying input (optional).
     ],
-
+    */
+    
     [
       'type'          => 'darkmode-widget' ,
       'topnav_right' => true , // Ou "topnav => true" para colocar à esquerda.

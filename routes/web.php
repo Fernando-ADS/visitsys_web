@@ -76,6 +76,7 @@ Route::resource('coordenadors', CoordenadorController::class)->middleware(['auth
 Route::get('agendamentos/search', [App\Http\Controllers\AgendamentoController::class, 'search'])->name('agendamentos.search')->middleware('auth');
 Route::resource('agendamentos', AgendamentoController::class)->middleware('auth');
 Route::post('agendamentos/procuraPaciente', [App\Http\Controllers\AgendamentoController::class, 'procuraPaciente'])->name('agendamentos.procuraPaciente')->middleware('auth');
+Route::post('agendamentos/procuraVisitante', [App\Http\Controllers\AgendamentoController::class, 'procuraVisitante'])->name('agendamentos.procuraVisitante')->middleware('auth');
 
 
 Route::get('visitas/search', [App\Http\Controllers\VisitaController::class, 'search'])->name('visitas.search')->middleware(['auth','check.is.admin']);

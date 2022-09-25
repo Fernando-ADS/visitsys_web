@@ -37,7 +37,7 @@
 
               @endif</td>
               <td>{{$agendamento->paciente->nome}}</td>
-              <td>{{$agendamento->visitante->nome}}</td>
+              <td>{{$agendamento->user->name}}</td>
               <td>{{$agendamento->data_agendamento}}</td>
               <td>
                 @if($agendamento->hora_agendamento == 1)08:00
@@ -59,7 +59,7 @@
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-2">
+          <div class="">
             <a class="btn btn-info" role="button" href="{{route('agendamentos.edit', $agendamento->id)}}">
               <i class="fa fa-list"></i> Editar
             </a>
@@ -73,7 +73,7 @@
 
           <div class="col-2">
             <form  name="frmDelete"
-            action="{{route('agendamentos.destroy', $agendamento->id)}}" method="post" onsubmit="return confirm('Deseja exlcuir?')">
+            action="{{route('agendamentos.destroy', $agendamento->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
 
             @csrf
             @method('DELETE')
@@ -87,6 +87,9 @@
         </form>
       </div>
     </div>
+
+
+
   </div>
 </div>
 

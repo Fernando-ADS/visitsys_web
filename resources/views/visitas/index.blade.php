@@ -77,7 +77,7 @@
             @endif</td>
 
             <td>{{$e->paciente->nome}}</td>
-            <td>{{$e->visitante->nome}}</td>
+            <td>{{$e->user->name}}</td>
 
             <td>
               <a href="{{route('visitas.show', $e->id)}}">

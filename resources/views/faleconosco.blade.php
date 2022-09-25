@@ -11,6 +11,7 @@
 
     <section class="content">
 
+    <form class="container-fluid "  action="{{route('home')}}"  method="head" name="formFaleConosco" id="formFaleConosco">
       <div class="card">
         <div class="card-body row">
           <div class="col-5 text-center d-flex align-items-center justify-content-center">
@@ -19,19 +20,19 @@
           <div class="col-7">
             <div class="form-group">
               <label for="inputName">Nome</label>
-              <input type="text" id="inputName" class="form-control" />
+              <input type="text" id="inputName" class="form-control" required/>
             </div>
             <div class="form-group">
               <label for="inputEmail">Email</label>
-              <input type="email" id="inputEmail" class="form-control" />
+              <input type="email" id="inputEmail" class="form-control" required />
             </div>
             <div class="form-group">
               <label for="inputSubject">Assunto</label>
-              <input type="text" id="inputSubject" class="form-control" />
+              <input type="text" id="inputSubject" class="form-control" required/>
             </div>
             <div class="form-group">
               <label for="inputMessage">Messagem</label>
-              <textarea id="inputMessage" class="form-control" rows="1"></textarea>
+              <textarea id="inputMessage" class="form-control" rows="1" required></textarea>
             </div>
             <div class="form-group">
               <input type="submit" class="btn btn-info" value="Enviar">
@@ -39,11 +40,16 @@
           </div>
         </div>
       </div>
+      </form>
     </section>
 
   </div>
 
 </div>
+
+
+
+
 
 @endsection
 <!--

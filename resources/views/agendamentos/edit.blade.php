@@ -54,11 +54,11 @@
 
 
         <div class="col-sm-6">
-          <label for="visitante_id" id="labelvisitante_id">Visitante:</label>
-          <select name="visitante_id" id="visitante_id" class="form-control">
-            <option value="{{$agendamento->visitante->id}}">{{$agendamento->visitante->nome}}</option>
-            @foreach($visitantes as $visitante)
-            <option value="{{$visitante->id}}">{{$visitante->nome}}</option>
+          <label for="user_id" id="labeluser_id">User:</label>
+          <select name="user_id" id="user_id" class="form-control">
+            <option value="{{$agendamento->user->id}}">{{$agendamento->user->name}}</option>
+            @foreach($users as $user)
+            <option value="{{$user->id}}">{{$user->name}}</option>
             @endforeach
           </select>
         </div>

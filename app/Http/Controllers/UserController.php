@@ -41,7 +41,9 @@ class UserController extends Controller
   */
   public function store(StoreUserRequest $request)
   {
-  //
+    User::create($request->all());
+    session()->flash('mensagem', 'Cadastrado com sucesso!');
+    return redirect()->route('users.index');
   }
 
   /**
@@ -93,7 +95,6 @@ class UserController extends Controller
   */
   public function destroy(User $user)
   {
-    /*
     if($user->visitas->count()>0 || $user->agendamentos->count()>0){
       session()->flash('mensagem', 'Não é permitido excluir! Existem associacões!');
     }
@@ -103,7 +104,6 @@ class UserController extends Controller
       session()->flash('mensagem', 'Excluído com sucesso!');
     }
     return redirect()->route('users.index');
-    */
   }
 
   public function search()

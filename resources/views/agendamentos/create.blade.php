@@ -22,6 +22,7 @@
 
       @csrf
 
+      <!--RADIOBUTTON PARA STATUS DO AGENDAMENTO-->
       <div>
         <label for="status_agendamento" id="labelstatus_agendamento">Status:</label>
 
@@ -60,6 +61,7 @@
         @endcan
 
 
+        <!--INPUT PARA USUARIO ESCREVER O NOME DO PACIENTE-->
         @can('is_user')
         <div class="row">
           <div class="col-sm-6">
@@ -77,7 +79,7 @@
           @endcan
 
 
-
+          <!--CABEÇALHO CRSFTOKEN-->
           <script type="text/javascript">
           $.ajaxSetup({
             headers: {
@@ -86,13 +88,14 @@
           });
           </script>
 
-          @can('is_user')
 
+          <!--INPUT INVISÍVEL PARA ENVIAR O ID DO PACIENTE PARA O FORMULÁRIO-->
+          @can('is_user')
           <input type="hidden" name="paciente_id" id="paciente_id" value="" class="form-control" required>
           @endcan
 
 
-
+          <!--FUNÇÃO AJAX PEGA PACIENTE-->
           @can('is_user')
           <script>
           $(function(){
@@ -127,106 +130,132 @@
           @endcan
 
 
-          <!--
+          @can('is_admin')
           <div class="col-sm-6">
-          <label for="visitante_id" id="labelvisitante_id">Visitante:</label>
-          <select name="visitante_id" id="visitante_id" class="form-control" disabled>
+            <label for="user_id" id="labeluser_id">user:</label>
+            <select name="user_id" id="user_id" class="form-control">
 
-          @foreach($visitantes as $e)
-          <option value="{{$e->id}}">{{$e->nome}}</option>
-          <option value="xxxx">{{ Auth::user()->name }}</option>
-          <option value= < ?php echo Auth::user()->name; ?>">{{ Auth::user()->name }}</option>
-          @endforeach
-        </select>
+              @foreach($users as $e)
+              <option value="{{$e->id}}">{{$e->name}}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>
+        @endcan
+
+
+
+        @can('is_user')
+        <div class="col-sm-12">
+          <label for="user_id" id="labeluser_id">Visitante:</label>
+          <input type="text" name="inputVisInvi" id="inputVisInvi" value= "<?php echo Auth::user()->name;?>" class="form-control" required disabled>
+        </div>
       </div>
-    </div>
-  -->
-
-
-  @can('is_admin')
-  <div class="col-sm-6">
-    <label for="visitante_id" id="labelvisitante_id">Visitante:</label>
-    <select name="visitante_id" id="visitante_id" class="form-control">
-
-      @foreach($visitantes as $e)
-      <option value="{{$e->id}}">{{$e->nome}}</option>
-      @endforeach
-    </select>
-  </div>
-</div>
-@endcan
-
-
-
-@can('is_user')
-<div class="col-sm-12">
-  <label for="visitante_id" id="labelvisitante_id">Visitante:</label>
-  <select name="visitante_id" id="visitante_id" class="form-control">
-
-    @foreach($visitantes as $e)
-    <option value="{{$e->id}}">{{$e->nome}}</option>
-    @endforeach
-  </select>
-</div>
-</div>
-@endcan
-
-
-
-<div class="row">
-  <div class="col-sm-6">
-    <label for="data_agendamento" id="labelData">Data:</label>
-    <input type="date" name="data_agendamento" id="data_agendamento" value="" class="form-control" required>
-  </div>
-
-
-  <div class="col-sm-6">
-    <label for="hora_agendamento" id="labelhora_agendamento">Horário:</label>
-    <select name="hora_agendamento" id="hora_agendamento" class="form-control" required>
-      <option value="1">08:00</option>
-      <option value="2">09:00</option>
-      <option value="3">10:00</option>
-      <option value="4">14:00</option>
-      <option value="5">15:00</option>
-      <option value="6">16:00</option>
-      <option value="7">17:00</option>
-    </select>
-  </div>
-</div>
-
-
-
-<br>
-
-
-<div class="form-group">
-  @can('is_admin')
-  <div>
-    <button class="btn btn-info" type="submit">
-      <i class="fa fa-plus"></i> Inserir
-    </button>
-    @endcan
-
-
-
-    @can('is_user')
-    <div>
-      <button class="btn btn-info" type="submit">
-        <i class="fa fa-plus"></i> Inserir
-      </button>
       @endcan
 
 
-      <button class="btn btn-danger" type="reset" >
-        <i class="fa fa-minus"></i> Limpar
-      </button>
+      <!--INPUT INVISÍVEL PARA ENVIAR O ID DO VISITANTE PARA O FORMULÁRIO-->
+      @can('is_user')
+      <input type="hidden" name="user_id" id="user_id" value= "<?php echo Auth::user()->id;?>" class="form-control" required>
+      @endcan
+
+      
+
+      <!--FUNÇÃO AJAX PEGA VISITANTE
+      @can('is_user')
+      <script>
+      $(function(){
+        $(document).on("click", "#validaPaciente", function(event){
+          event.preventDefault();
+          var inputVisitante =  $('#inputVisInvi').val();
+
+          $.ajax({
+            url: "{{route('agendamentos.procuraVisitante')}}",
+            type: "post",
+            data:{
+              'nome_user':inputVisitante,
+              _token:'{{ csrf_token() }}'
+            },
+            dataType: 'json',
+            success: function(response){
+              if(response.success === true){
+                //alert('Visitante encontrado!');
+                user_id.value = response.id;
+                //$('form[name = "formAgendamento"]').submit();
+                //break;
+              }
+              else {
+                alert('Visitante não encontrado!');
+                user_id.value = null;
+                //inputVisInvi.value = null;
+
+              }
+            }
+          });
+
+        });
+
+      });
+      </script>
+      @endcan
+      -->
+
+
+
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="data_agendamento" id="labelData">Data:</label>
+          <input type="date" name="data_agendamento" id="data_agendamento" value="" class="form-control" required>
+        </div>
+
+
+        <div class="col-sm-6">
+          <label for="hora_agendamento" id="labelhora_agendamento">Horário:</label>
+          <select name="hora_agendamento" id="hora_agendamento" class="form-control" required>
+            <option value="1">08:00</option>
+            <option value="2">09:00</option>
+            <option value="3">10:00</option>
+            <option value="4">14:00</option>
+            <option value="5">15:00</option>
+            <option value="6">16:00</option>
+            <option value="7">17:00</option>
+          </select>
+        </div>
+      </div>
+
+
+
+      <br>
+
+
+      <div class="form-group">
+        @can('is_admin')
+        <div>
+          <button class="btn btn-info" type="submit">
+            <i class="fa fa-plus"></i> Inserir
+          </button>
+          @endcan
+
+
+
+          @can('is_user')
+          <div>
+            <button class="btn btn-info" type="submit">
+              <i class="fa fa-plus"></i> Inserir
+            </button>
+            @endcan
+
+
+            <button class="btn btn-danger" type="reset" >
+              <i class="fa fa-minus"></i> Limpar
+            </button>
+          </div>
+        </div>
+
+      </form>
     </div>
-  </div>
 
-</form>
-</div>
-
-@endsection
-<!--
-Fernando Aparecido da Silva - 1518291
--->
+    @endsection
+    <!--
+    Fernando Aparecido da Silva - 1518291
+  -->

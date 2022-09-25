@@ -37,7 +37,7 @@
 
               @endif</td>
               <td>{{$visita->paciente->nome}}</td>
-              <td>{{$visita->visitante->nome}}</td>
+              <td>{{$visita->user->name}}</td>
               <td>{{$visita->data_visita}}</td>
               <td>
                 @if($visita->hora_visita == 1)08:00

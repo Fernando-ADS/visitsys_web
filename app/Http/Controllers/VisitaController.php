@@ -7,6 +7,7 @@ use App\Models\Coordenador;
 use App\Models\Paciente;
 use App\Models\Recepcionista;
 use App\Models\Visitante;
+use App\Models\User;
 use App\Http\Requests\StoreVisitaRequest;
 use App\Http\Requests\UpdateVisitaRequest;
 
@@ -31,9 +32,9 @@ class VisitaController extends Controller
     public function create()
     {
       $pacientes = Paciente::get();
-      $visitantes = Visitante::get();
+      $users = User::get();
       $visitas = Visita::get();
-      return view('visitas.create', ['pacientes'=>$pacientes, 'visitantes'=> $visitantes]);
+      return view('visitas.create', ['pacientes'=>$pacientes, 'users'=> $users]);
     }
 
     /**
@@ -69,8 +70,8 @@ class VisitaController extends Controller
     public function edit(Visita $visita)
     {
       $pacientes = Paciente::get();
-      $visitantes = Visitante::get();
-      return view('visitas.edit', ['pacientes'=>$pacientes, 'visitantes'=> $visitantes, 'visita'=>$visita]);
+      $users = User::get();
+      return view('visitas.edit', ['pacientes'=>$pacientes, 'users'=> $users, 'visita'=>$visita]);
     }
 
     /**

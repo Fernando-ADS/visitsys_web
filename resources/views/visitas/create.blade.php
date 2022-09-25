@@ -33,12 +33,12 @@
     </div>
 
     <div class="col-2">
-      <input type="radio" name="status_visita" value="2" id="aprovado" disabled>
+      <input type="radio" name="status_visita" value="2" id="aprovado">
       <label for="aprovado">Aprovado</label>
     </div>
 
     <div class="col-2">
-      <input type="radio" name="status_visita" value="3" id="negado" disabled>
+      <input type="radio" name="status_visita" value="3" id="negado">
       <label for="negado">Negado</label>
     </div>
 
@@ -61,11 +61,11 @@
 
 
   <div class="col-sm-6">
-    <label for="visitante_id" id="labelvisitante_id">Visitante:</label>
-    <select name="visitante_id" id="visitante_id" class="form-control">
+    <label for="user_id" id="labeluser_id">User:</label>
+    <select name="user_id" id="user_id" class="form-control">
 
-      @foreach($visitantes as $e)
-      <option value="{{$e->id}}">{{$e->nome}}</option>
+      @foreach($users as $e)
+      <option value="{{$e->id}}">{{$e->name}}</option>
       @endforeach
     </select>
   </div>
@@ -96,8 +96,6 @@
     <option value="7">17:00</option>
   </select>
  </div>
-
-
 
 </div>
 <br>
