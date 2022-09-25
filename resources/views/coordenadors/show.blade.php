@@ -39,33 +39,37 @@
 
 
 
-    <div>
-      <a class="btn btn-info" role="button" href="{{route('coordenadors.edit', $coordenador->id)}}">
-        <i class="fa fa-list"></i> Editar
-      </a>
+    <div class="container-fluid">
+      <div class="btn-group">
+        <div class="col-xs">
 
-      <a class="btn btn-secondary" role="button" href="{{route('coordenadors.index')}}">
-        <i class="fa fa-arrow-left"></i> Voltar
-      </a>
+          <a class="btn btn-info" role="button" href="{{route('coordenadors.edit', $coordenador->id)}}">
+            <i class="fa fa-list"></i> Editar
+          </a>
+        </div>
+
+        <div class="col-md">
+          <a class="btn btn-secondary" role="button" href="{{route('coordenadors.index')}}">
+            <i class="fa fa-arrow-left"></i> Voltar
+          </a>
+        </div>
+
+        <form name="frmDelete" action="{{route('coordenadors.destroy', $coordenador->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
+
+          @csrf
+          @method('DELETE')
+
+          <div class="col-xs">
+            <button class="btn btn-danger" type="submit">
+              <i class="fa fa-trash"></i> Excluir
+            </button>
+          </div>
+      </div>
+      </form>
+
     </div>
-
-
-    <br>
-    <div>
-      <form  name="frmDelete"
-      action="{{route('coordenadors.destroy', $coordenador->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
-
-      @csrf
-      @method('DELETE')
-
-      <button class="btn btn-danger" type="submit" >
-        <i class="fa fa-trash"></i> Excluir
-      </button>
-
-    </form>
-
   </div>
-</div>
+  <br>
 </div>
 </div>
 </div>

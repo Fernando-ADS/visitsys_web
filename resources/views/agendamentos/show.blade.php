@@ -12,7 +12,7 @@
     <div class="table-responsive">
       <table class="table table-bordered table-hover table-striped" style="text-align:center">
         <br>
-        <thead class="thead" >
+        <thead class="thead">
           <tr>
             <th>ID</th>
             <th>Status</th>
@@ -36,61 +36,58 @@
               @elseif($agendamento->status_agendamento == 3)Negado
 
               @endif</td>
-              <td>{{$agendamento->paciente->nome}}</td>
-              <td>{{$agendamento->user->name}}</td>
-              <td>{{$agendamento->data_agendamento}}</td>
-              <td>
-                @if($agendamento->hora_agendamento == 1)08:00
-                @elseif($agendamento->hora_agendamento == 2)09:00
-                @elseif($agendamento->hora_agendamento == 3)10:00
-                @elseif($agendamento->hora_agendamento == 4)14:00
-                @elseif($agendamento->hora_agendamento == 5)15:00
-                @elseif($agendamento->hora_agendamento == 6)16:00
-                @elseif($agendamento->hora_agendamento == 7)17:00                
-                @endif
-              </td>
+            <td>{{$agendamento->paciente->nome}}</td>
+            <td>{{$agendamento->user->name}}</td>
+            <td>{{date('d/m/Y', strtotime($agendamento->data_agendamento))}}</td>
+            <td>
+              @if($agendamento->hora_agendamento == 1)08:00
+              @elseif($agendamento->hora_agendamento == 2)09:00
+              @elseif($agendamento->hora_agendamento == 3)10:00
+              @elseif($agendamento->hora_agendamento == 4)14:00
+              @elseif($agendamento->hora_agendamento == 5)15:00
+              @elseif($agendamento->hora_agendamento == 6)16:00
+              @elseif($agendamento->hora_agendamento == 7)17:00
+              @endif
+            </td>
 
-            </tr>
+          </tr>
 
-          </tbody>
+        </tbody>
 
-        </table>
-      </div>
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="">
-            <a class="btn btn-info" role="button" href="{{route('agendamentos.edit', $agendamento->id)}}">
-              <i class="fa fa-list"></i> Editar
-            </a>
-          </div>
-
-          <div class="col-2">
-            <a class="btn btn-secondary" role="button" href="{{route('agendamentos.index')}}">
-              <i class="fa fa-arrow-left"></i> Voltar
-            </a>
-          </div>
-
-          <div class="col-2">
-            <form  name="frmDelete"
-            action="{{route('agendamentos.destroy', $agendamento->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
-
-            @csrf
-            @method('DELETE')
-
-            <div>
-              <button class="btn btn-danger" type="submit" >
-                <i class="fa fa-trash"></i> Excluir
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+      </table>
     </div>
 
+    <div class="container-fluid">
+      <div class="btn-group">
+        <div class="col-xs">
+          <a class="btn btn-info" role="button" href="{{route('agendamentos.edit', $agendamento->id)}}">
+            <i class="fa fa-list"></i> Editar
+          </a>
+        </div>
 
+        <div class="col-md">
+          <a class="btn btn-secondary" role="button" href="{{route('agendamentos.index')}}">
+            <i class="fa fa-arrow-left"></i> Voltar
+          </a>
+        </div>
 
+        <form name="frmDelete" action="{{route('agendamentos.destroy', $agendamento->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
+
+          @csrf
+          @method('DELETE')
+
+          <div>
+            <button class="btn btn-danger" type="submit">
+              <i class="fa fa-trash"></i> Excluir
+            </button>
+          </div>
+      </div>
+      </form>
+      
+    </div>
   </div>
+  <br>
+</div>
 </div>
 
 

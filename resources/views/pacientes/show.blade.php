@@ -39,38 +39,36 @@
 
 
     <div class="container-fluid">
-      <div class="row">
-        <div class="col-2">
+      <div class="btn-group">
+        <div class="col-xs">
           <a class="btn btn-info" role="button" href="{{route('pacientes.edit', $paciente->id)}}">
             <i class="fa fa-list"></i> Editar
           </a>
-
         </div>
-        <div class="col-2">
+
+
+        <div class="col-md">
           <a class="btn btn-secondary" role="button" href="{{route('pacientes.index')}}">
             <i class="fa fa-arrow-left"></i> Voltar
           </a>
-
         </div>
 
-        <div class="col-2">
-          <form name="frmDelete"
-          action="{{route('pacientes.destroy', $paciente->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
+        <form name="frmDelete" action="{{route('pacientes.destroy', $paciente->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
 
           @csrf
           @method('DELETE')
 
           <div>
-            <button class="btn btn-danger" type="submit" >
+            <button class="btn btn-danger" type="submit">
               <i class="fa fa-trash"></i> Excluir
             </button>
           </div>
 
-        </div>
+      </div>
       </form>
-
     </div>
   </div>
+  <br>
 </div>
 </div>
 @endsection

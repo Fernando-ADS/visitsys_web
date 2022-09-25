@@ -306,12 +306,14 @@ return [
 
   ],
 
+  /*
   [
     'text' => 'Visitantes',
     'url'  => 'visitantes',
     'icon' => 'fas fa-fw fa-users',
     'can'  => 'is_admin',
   ],
+  */
 
   [
     'text' => 'Recepcionistas',

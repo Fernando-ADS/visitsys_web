@@ -16,8 +16,8 @@
 
       <div class="row">
         <div class="col-sm-6">
-          <label for="nome" id="labelNome">Nome:</label>
-          <input type="text" name="nome" id="nome" value="{{$user->name}}" class="form-control" required>
+          <label for="name" id="labelName">name:</label>
+          <input type="text" name="name" id="name" value="{{$user->name}}" class="form-control" required>
         </div>
       </div>
 
@@ -28,45 +28,85 @@
         </div>
       </div>
 
+
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="cpf" id="labelcpf">CPF:</label>
+          <input type="cpf" name="cpf" id="cpf" value="{{$user->cpf}}" class="form-control" required>
+        </div>
+      </div>
+
+
       <div class="row">
         <div class="col-sm-6">
           <label for="tipo" id="labeltipo">Perfil:</label>
           <select name="tipo" id="tipo" class="form-control">
             <option value="" disabled selected>Selecione</option>
 
-            <option value="admin"
-            @if($user->tipo == 'admin')
-            selected
-            @endif
-            >Admin</option>
+            <option value="admin" @if($user->tipo == 'admin')
+              selected
+              @endif
+              >Admin</option>
 
-            <option value="user"
-            @if($user->tipo == 'user')
-            selected
-            @endif
-            >User</option>
+            <option value="user" @if($user->tipo == 'user')
+              selected
+              @endif
+              >User</option>
           </select>
         </div>
-
       </div>
+
+
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="telefone" id="labeltelefone">Telefone:</label>
+          <input type="telefone" name="telefone" id="telefone" value="{{$user->telefone}}" class="form-control" required>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-6">
+          <label for="endereco" id="labelendereco">Endereço:</label>
+          <input type="endereco" name="endereco" id="endereco" value="{{$user->endereco}}" class="form-control" required>
+        </div>
+      </div>
+
       <br>
 
       <div>
-        <button class="btn btn-info" type="submit" >
-          <i class="fa fa-check" ></i> Atualizar
+        <div class="btn-group">
+
+          <div class="col-xs">
+            <button class="btn btn-info" type="submit">
+              <i class="fa fa-check"></i> Atualizar
+            </button>
+          </div>
+
+          <div class="col-md">
+            <a class="btn btn-secondary" role="button" href="{{route('users.index')}}">
+              <i class="fa fa-arrow-left"></i> Voltar
+            </a>
+          </div>
+
+    </form>
+
+    <form name="frmDelete" action="{{route('users.destroy', $user->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
+
+      @csrf
+      @method('DELETE')
+
+      <div>
+        <button class="btn btn-danger" type="submit">
+          <i class="fa fa-trash"></i> Excluir
         </button>
-
-        <a class="btn btn-secondary" role="button" href="{{route('users.index')}}">
-          <i class="fa fa-arrow-left"></i> Voltar
-        </a>
       </div>
-
-    </div>
+  </div>
   </form>
-
-
 </div>
-
+<br>
+</div>
+</div>
 
 
 @endsection

@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Visita;
+use App\Models\Agendamento;
 
 class User extends Authenticatable
 {
@@ -46,4 +48,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function agendamentos()
+    {
+        return $this->hasMany(Agendamento::class);
+    }
+
+    public function visitas()
+    {
+        return $this->hasMany(Visita::class);
+    }
 }

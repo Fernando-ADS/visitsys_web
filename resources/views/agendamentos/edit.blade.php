@@ -54,7 +54,7 @@
 
 
         <div class="col-sm-6">
-          <label for="user_id" id="labeluser_id">User:</label>
+          <label for="user_id" id="labeluser_id">Visitante:</label>
           <select name="user_id" id="user_id" class="form-control">
             <option value="{{$agendamento->user->id}}">{{$agendamento->user->name}}</option>
             @foreach($users as $user)

@@ -19,7 +19,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h4>Listagem de Pacientes</h4>
+    <h4>Listagem de Recepcionistas</h4>
   </div>
 
 

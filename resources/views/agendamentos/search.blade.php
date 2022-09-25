@@ -29,9 +29,9 @@
         <form method="GET" action="{{ route('agendamentos.search') }}">
           @csrf
           <div class="input-group mb-3">
-            <input class="form-control" name="search"  placeholder="Pesquisar"/>
+            <input class="form-control" name="search" placeholder="Pesquisar" />
             <div class="input-group-append">
-              <button class="btn btn-info" type="submit" >
+              <button class="btn btn-info" type="submit">
                 <i class="fa fa-search"></i> Buscar
               </button>
             </div>
@@ -50,15 +50,15 @@
         <table class="table table-hover" style="text-align: center">
           <thead>
             <tr>
-              <tr>
-                <th>ID</th>
-                <th>Status</th>
-                <th>Paciente</th>
-                <th>Visitante</th>
-                <th>Data</th>
-                <th>Horário</th>
+            <tr>
+              <th>ID</th>
+              <th>Status</th>
+              <th>Paciente</th>
+              <th>Visitante</th>
+              <th>Data</th>
+              <th>Horário</th>
 
-              </tr>
+            </tr>
             </tr>
           </thead>
           <tbody>
