@@ -13,7 +13,6 @@ use App\Http\Requests\StoreAgendamentoRequest;
 use App\Http\Requests\UpdateAgendamentoRequest;
 use App\Http\Requests\AjaxAgendamentoRequest;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
 use Illuminate\Support\Facades\Mail;
 
 class AgendamentoController extends Controller
