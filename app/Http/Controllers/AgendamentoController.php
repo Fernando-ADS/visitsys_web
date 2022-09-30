@@ -196,7 +196,6 @@ class AgendamentoController extends Controller
       });
     }
 
-
     session()->flash('mensagem', 'Atualizado com sucesso!');
     return redirect()->route('agendamentos.index');
   }
