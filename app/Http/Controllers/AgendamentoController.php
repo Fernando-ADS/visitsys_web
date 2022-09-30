@@ -135,10 +135,35 @@ class AgendamentoController extends Controller
       }
 
 
+      //Calcula a hora para exibição
+      $hora_visita_final = 0;
+      if($hora_visita == 1){
+        $hora_visita_final = 8;
+      }
+      elseif($hora_visita == 2){
+        $hora_visita_final = 9;
+      }
+      elseif($hora_visita == 3){
+        $hora_visita_final = 10;
+      }
+      elseif($hora_visita == 4){
+        $hora_visita_final = 14;
+      }
+      elseif($hora_visita == 5){
+        $hora_visita_final = 15;
+      }
+      elseif($hora_visita == 6){
+        $hora_visita_final = 16;
+      }
+      else{
+        $hora_visita_final = 17;
+      }
+
+
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = $nova_visita->id;
-      QrCode::size(200)->generate('qrrrrrrrrr', '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
-
+      QrCode::format('png')->size(350)->generate(' '. date('d/m/Y', strtotime($data_visita)). ' | '. $hora_visita_final . 'h' . ' | Ala - ' . $id_visita, '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
+      
 
 
       //Envia email para o visitante com o QR Code

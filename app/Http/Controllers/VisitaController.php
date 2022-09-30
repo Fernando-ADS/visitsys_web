@@ -10,6 +10,8 @@ use App\Models\Visitante;
 use App\Models\User;
 use App\Http\Requests\StoreVisitaRequest;
 use App\Http\Requests\UpdateVisitaRequest;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\Mail;
 
 class VisitaController extends Controller
 {
@@ -46,6 +48,44 @@ class VisitaController extends Controller
     public function store(StoreVisitaRequest $request)
     {
       Visita::create($request->all());
+
+
+      //Model Visita
+      $paciente_id = $request->input('paciente_id');
+      $user_id = $request->input('user_id');
+      $data_visita = $request->input('data_visita');
+      $hora_visita = $request->input('hora_visita');
+
+
+      //Pega o email do visitante correspondente
+      $users = User::get();
+      $email_user = null;
+      foreach ($users as $e) {
+        if ($e->id == $user_id) {
+          $email_user = $e->email;
+        }
+      }
+
+
+      //Gera o QR Code com id da visita e salva na pasta
+      //$id_visita = $nova_visita->id;
+      $id_visita = request()->route('id');
+      QrCode::size(300)->generate('qrrrrrrrrr', '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
+
+
+
+      //Envia email para o visitante com o QR Code
+      Mail::send('email.visitaConfirmada', ['data_visita' => $data_visita, 'hora_visita' => $hora_visita], function ($mensagem) use ($email_user, $data_visita, $hora_visita, $id_visita) {
+        $mensagem->from('visitsys.gestao@gmail.com', 'VisitSys | Gestão Hospitalar');
+        $mensagem->to($email_user);
+        $mensagem->subject('Resultado do Agendamento');
+        $mensagem->attach('../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
+      });
+
+
+      
+
+
       session()->flash('mensagem', 'Cadastrado com sucesso!');
       return redirect()->route('visitas.index');
     }
