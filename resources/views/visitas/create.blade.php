@@ -28,7 +28,7 @@
 
   <div class="row">
     <div class="col-2">
-      <input type="radio" name="status_visita" value="1" id="solicitado">
+      <input type="radio" name="status_visita" value="1" id="solicitado" checked>
       <label for="solicitado">Solicitado</label>
     </div>
 

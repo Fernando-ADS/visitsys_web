@@ -47,66 +47,89 @@ class VisitaController extends Controller
    */
   public function store(StoreVisitaRequest $request)
   {
-    Visita::create($request->all());
+    $visitas = Visita::create($request->all());
+    $id_visita = $visitas->id;
 
 
-    //Model Visita
-    $paciente_id = $request->input('paciente_id');
-    $user_id = $request->input('user_id');
-    $data_visita = $request->input('data_visita');
-    $hora_visita = $request->input('hora_visita');
+    /*
+  * Options value
+  * 1 - Solicitado / 2 - Aprovado / 3 - Negado
+  */
+
+    $status_visita = $request->input('status_visita');
+
+    //se o agendamento for aprovado, cria uma nova visita com os mesmos dados
+    if ($status_visita == '2') {
+
+      //Model Visita
+      $paciente_id = $request->input('paciente_id');
+      $user_id = $request->input('user_id');
+      $data_visita = $request->input('data_visita');
+      $hora_visita = $request->input('hora_visita');
 
 
-    //Pega o email do visitante correspondente
-    $users = User::get();
-    $email_user = null;
-    foreach ($users as $e) {
-      if ($e->id == $user_id) {
-        $email_user = $e->email;
+      //Pega o email do visitante correspondente
+      $users = User::get();
+      $email_user = null;
+      foreach ($users as $e) {
+        if ($e->id == $user_id) {
+          $email_user = $e->email;
+        }
       }
+
+
+      //Calcula a hora para exibição
+      $hora_visita_final = 0;
+      if ($hora_visita == 1) {
+        $hora_visita_final = 8;
+      } elseif ($hora_visita == 2) {
+        $hora_visita_final = 9;
+      } elseif ($hora_visita == 3) {
+        $hora_visita_final = 10;
+      } elseif ($hora_visita == 4) {
+        $hora_visita_final = 14;
+      } elseif ($hora_visita == 5) {
+        $hora_visita_final = 15;
+      } elseif ($hora_visita == 6) {
+        $hora_visita_final = 16;
+      } else {
+        $hora_visita_final = 17;
+      }
+
+
+      //Gera o QR Code com id da visita e salva na pasta
+      $id_visita = request()->route('id');
+      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $id_visita, '../resources/qrcodes/qrcode_visita_v' .$id_visita. '.png');
+
+
+      //Envia email para o visitante com o QR Code
+      Mail::send('email.visitaConfirmada', ['data_visita' => $data_visita, 'hora_visita' => $hora_visita], function ($mensagem) use ($email_user, $data_visita, $hora_visita, $id_visita) {
+        $mensagem->from('visitsys.gestao@gmail.com', 'VisitSys | Gestão Hospitalar');
+        $mensagem->to($email_user);
+        $mensagem->subject('Resultado da Visita');
+        $mensagem->attach('../resources/qrcodes/qrcode_visita_v' .$id_visita. '.png');
+      });
     }
 
+    //Se o agendamento não for aprovado, envia email avisando que foi negado
+    if ($status_visita == '3') {
 
+      //Pega o email do visitante correspondente
+      $user_id = $request->input('user_id');
+      $users = User::get();
+      $email_user = null;
+      foreach ($users as $e) {
+        if ($e->id == $user_id) {
+          $email_user = $e->email;
+        }
+      }
 
-    //Calcula a hora para exibição
-    $hora_visita_final = 0;
-    if ($hora_visita == 1) {
-      $hora_visita_final = 8;
-    } elseif ($hora_visita == 2) {
-      $hora_visita_final = 9;
-    } elseif ($hora_visita == 3) {
-      $hora_visita_final = 10;
-    } elseif ($hora_visita == 4) {
-      $hora_visita_final = 14;
-    } elseif ($hora_visita == 5) {
-      $hora_visita_final = 15;
-    } elseif ($hora_visita == 6) {
-      $hora_visita_final = 16;
-    } else {
-      $hora_visita_final = 17;
+      Mail::send('email.visitaNegada', [], function ($mensagem) use ($email_user) {
+        $mensagem->from('visitsys.gestao@gmail.com', 'VisitSys | Gestão Hospitalar');
+        $mensagem->to($email_user);
+        $mensagem->subject('Resultado da Visita');
+      });
     }
-
-
-
-    //Gera o QR Code com id da visita e salva na pasta
-    //$id_visita = $nova_visita->id;
-    $id_visita = request()->route('id');
-    QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $id_visita, '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
-
-
-
-
-    //Envia email para o visitante com o QR Code
-    Mail::send('email.visitaConfirmada', ['data_visita' => $data_visita, 'hora_visita' => $hora_visita], function ($mensagem) use ($email_user, $data_visita, $hora_visita, $id_visita) {
-      $mensagem->from('visitsys.gestao@gmail.com', 'VisitSys | Gestão Hospitalar');
-      $mensagem->to($email_user);
-      $mensagem->subject('Resultado da Visita');
-      $mensagem->attach('../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
-    });
-
-
-
-
 
     session()->flash('mensagem', 'Cadastrado com sucesso!');
     return redirect()->route('visitas.index');
@@ -143,6 +166,9 @@ class VisitaController extends Controller
    * @param  \App\Models\Visita  $visita
    * @return \Illuminate\Http\Response
    */
+
+
+
   public function update(UpdateVisitaRequest $request, Visita $visita)
   {
     $visita->fill($request->all());
@@ -156,18 +182,16 @@ class VisitaController extends Controller
 
     $status_visita = $request->input('status_visita');
 
+
+    //Model Visita
+    $paciente_id = $request->input('paciente_id');
+    $user_id = $request->input('user_id');
+    $data_visita = $request->input('data_visita');
+    $hora_visita = $request->input('hora_visita');
+
+
     //se o agendamento for aprovado, cria uma nova visita com os mesmos dados
     if ($status_visita == '2') {
-
-      //Model Visita
-      $paciente_id = $request->input('paciente_id');
-      $user_id = $request->input('user_id');
-      $data_visita = $request->input('data_visita');
-      $hora_visita = $request->input('hora_visita');
-
-
-      $visita->fill(array('status_visita' => $status_visita, 'paciente_id' => $paciente_id, 'user_id' => $user_id, 'data_visita' => $data_visita, 'hora_visita' => $hora_visita));
-      $visita->save();
 
 
       //Pega o email do visitante correspondente
@@ -201,7 +225,7 @@ class VisitaController extends Controller
 
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = $visita->id;
-      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $id_visita, '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
+      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $id_visita, '../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
 
 
 
@@ -210,14 +234,42 @@ class VisitaController extends Controller
         $mensagem->from('visitsys.gestao@gmail.com', 'VisitSys | Gestão Hospitalar');
         $mensagem->to($email_user);
         $mensagem->subject('Resultado do Agendamento');
-        $mensagem->attach('../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
+        $mensagem->attach('../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
       });
-
-
-      session()->flash('mensagem', 'Atualizado com sucesso!');
-      return redirect()->route('visitas.index');
     }
+
+
+    //Se o agendamento não for aprovado, envia email avisando que foi negado
+    if ($status_visita == '3') {
+
+      //Pega o email do visitante correspondente
+      $user_id = $request->input('user_id');
+      $users = User::get();
+      $email_user = null;
+      foreach ($users as $e) {
+        if ($e->id == $user_id) {
+          $email_user = $e->email;
+        }
+      }
+
+      Mail::send('email.visitaNegada', [], function ($mensagem) use ($email_user) {
+        $mensagem->from('visitsys.gestao@gmail.com', 'VisitSys | Gestão Hospitalar');
+        $mensagem->to($email_user);
+        $mensagem->subject('Resultado da Visita');
+      });
+    }
+
+    $visita->fill(array('status_visita' => $status_visita, 'paciente_id' => $paciente_id, 'user_id' => $user_id, 'data_visita' => $data_visita, 'hora_visita' => $hora_visita));
+    $visita->save();
+
+    session()->flash('mensagem', 'Atualizado com sucesso!');
+    return redirect()->route('visitas.index');
   }
+
+
+
+
+
 
   /**
    * Remove the specified resource from storage.

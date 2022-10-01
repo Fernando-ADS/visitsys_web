@@ -103,6 +103,7 @@ class AgendamentoController extends Controller
   {
     $agendamento->fill($request->all());
     $agendamento->save();
+  
 
     /*
   * Options value
