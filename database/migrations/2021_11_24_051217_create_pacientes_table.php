@@ -20,6 +20,7 @@ class CreatePacientesTable extends Migration
           $table->string('telefone',80);
           $table->string('email',80);
           $table->string('endereco',80);
+          $table->string('ala',6);
           $table->timestamps();
         });
     }

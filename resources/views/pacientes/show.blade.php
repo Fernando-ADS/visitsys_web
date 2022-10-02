@@ -16,6 +16,7 @@
           <tr>
             <th>CPF</th>
             <th>Nome</th>
+            <th>Ala</th>
             <th>Telefone</th>
             <th>Email</th>
             <th>Endereço</th>
@@ -27,6 +28,15 @@
           <tr>
             <td>{{$paciente->cpf}}</td>
             <td>{{$paciente->nome}}</td>
+            <td>
+              @if($paciente->ala == 1)A
+              @elseif($paciente->ala == 2)B
+              @elseif($paciente->ala == 3)C
+              @elseif($paciente->ala == 4)D
+              @elseif($paciente->ala == 5)E
+              @elseif($paciente->ala == 6)F
+              @endif
+            </td>
             <td>{{$paciente->telefone}}</td>
             <td>{{$paciente->email}}</td>
             <td>{{$paciente->endereco}}</td>

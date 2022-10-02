@@ -52,7 +52,7 @@
             <tr>
               <th>CPF</th>
               <th>Nome</th>
-              <th>Telefone</th>
+              <th>Ala</th>
               <th>Detalhes</th>
             </tr>
           </thead>
@@ -61,7 +61,7 @@
             <tr>
               <td>{{$e->cpf}}</td>
               <td>{{$e->nome}}</td>
-              <td>{{$e->telefone}}</td>
+              <td>{{$e->ala}}</td>
               <td >
                 <a href="{{route('pacientes.show', $e->id)}}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#14a4bc" class="bi bi-info-square-fill" viewBox="0 0 16 16">

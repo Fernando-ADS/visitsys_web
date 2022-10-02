@@ -58,6 +58,8 @@ class VisitaController extends Controller
 
     $status_visita = $request->input('status_visita');
 
+
+
     //se o agendamento for aprovado, cria uma nova visita com os mesmos dados
     if ($status_visita == '2') {
 
@@ -76,6 +78,17 @@ class VisitaController extends Controller
           $email_user = $e->email;
         }
       }
+
+
+      //Pega a ala do paciente correspondente
+      $pacientes = Paciente::get();
+      $ala_paciente = null;
+      foreach ($pacientes as $e) {
+        if ($e->id == $paciente_id) {
+          $ala_paciente = $e->ala;
+        }
+      }
+
 
 
       //Calcula a hora para exibição
@@ -99,7 +112,7 @@ class VisitaController extends Controller
 
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = request()->route('id');
-      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $id_visita, '../resources/qrcodes/qrcode_visita_v' .$id_visita. '.png');
+      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente, '../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
 
 
       //Envia email para o visitante com o QR Code
@@ -107,7 +120,7 @@ class VisitaController extends Controller
         $mensagem->from('visitsys.gestao@gmail.com', 'VisitSys | Gestão Hospitalar');
         $mensagem->to($email_user);
         $mensagem->subject('Resultado da Visita');
-        $mensagem->attach('../resources/qrcodes/qrcode_visita_v' .$id_visita. '.png');
+        $mensagem->attach('../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
       });
     }
 
@@ -190,6 +203,18 @@ class VisitaController extends Controller
     $hora_visita = $request->input('hora_visita');
 
 
+    //Pega a ala do paciente correspondente
+    $pacientes = Paciente::get();
+    $ala_paciente = null;
+    foreach ($pacientes as $e) {
+      if ($e->id == $paciente_id) {
+        $ala_paciente = $e->ala;
+      }
+    }
+
+
+
+
     //se o agendamento for aprovado, cria uma nova visita com os mesmos dados
     if ($status_visita == '2') {
 
@@ -225,7 +250,7 @@ class VisitaController extends Controller
 
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = $visita->id;
-      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $id_visita, '../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
+      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente, '../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
 
 
 

@@ -103,7 +103,7 @@ class AgendamentoController extends Controller
   {
     $agendamento->fill($request->all());
     $agendamento->save();
-  
+
 
     /*
   * Options value
@@ -136,35 +136,39 @@ class AgendamentoController extends Controller
       }
 
 
+      //Pega a ala do paciente correspondente
+      $pacientes = Paciente::get();
+      $ala_paciente = null;
+      foreach ($pacientes as $e) {
+        if ($e->id == $paciente_id) {
+          $ala_paciente = $e->ala;
+        }
+      }
+
+
       //Calcula a hora para exibição
       $hora_visita_final = 0;
-      if($hora_visita == 1){
+      if ($hora_visita == 1) {
         $hora_visita_final = 8;
-      }
-      elseif($hora_visita == 2){
+      } elseif ($hora_visita == 2) {
         $hora_visita_final = 9;
-      }
-      elseif($hora_visita == 3){
+      } elseif ($hora_visita == 3) {
         $hora_visita_final = 10;
-      }
-      elseif($hora_visita == 4){
+      } elseif ($hora_visita == 4) {
         $hora_visita_final = 14;
-      }
-      elseif($hora_visita == 5){
+      } elseif ($hora_visita == 5) {
         $hora_visita_final = 15;
-      }
-      elseif($hora_visita == 6){
+      } elseif ($hora_visita == 6) {
         $hora_visita_final = 16;
-      }
-      else{
+      } else {
         $hora_visita_final = 17;
       }
 
 
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = $nova_visita->id;
-      QrCode::format('png')->size(350)->generate(' '. date('d/m/Y', strtotime($data_visita)). ' | '. $hora_visita_final . 'h' . ' | Ala - ' . $id_visita, '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
-      
+      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente, '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
+
 
 
       //Envia email para o visitante com o QR Code
