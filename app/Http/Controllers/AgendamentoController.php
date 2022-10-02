@@ -15,6 +15,7 @@ use App\Http\Requests\AjaxAgendamentoRequest;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Illuminate\Support\Facades\Mail;
 
+
 class AgendamentoController extends Controller
 {
   /**
@@ -145,6 +146,22 @@ class AgendamentoController extends Controller
         }
       }
 
+      //Pega a ala para exibição
+      $ala_paciente_final = 0;
+      if ($ala_paciente == 1) {
+        $ala_paciente_final = 'A';
+      } elseif ($ala_paciente == 2) {
+        $ala_paciente_final = 'B';
+      } elseif ($ala_paciente == 3) {
+        $ala_paciente_final = 'C';
+      } elseif ($ala_paciente == 4) {
+        $ala_paciente_final = 'D';
+      } elseif ($ala_paciente == 5) {
+        $ala_paciente_final = 'E';
+      } else {
+        $ala_paciente_final = 'F';
+      }
+
 
       //Calcula a hora para exibição
       $hora_visita_final = 0;
@@ -167,7 +184,7 @@ class AgendamentoController extends Controller
 
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = $nova_visita->id;
-      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente, '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
+      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente_final, '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
 
 
 

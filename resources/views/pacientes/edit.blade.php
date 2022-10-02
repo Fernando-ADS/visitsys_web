@@ -1,6 +1,7 @@
 @extends('adminlte::page')
 @section('content')
 
+
 <div class="card">
   <div class="card-header">
     <i class="fa fa-info-circle"></i>

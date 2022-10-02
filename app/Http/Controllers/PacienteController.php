@@ -8,6 +8,10 @@ use App\Models\Visita;
 use App\Models\Agendamento;
 use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
+use JeroenNoten\LaravelAdminLte\View\Components\Widget\Alert;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Brian2694\Toastr\Toastr;
+
 
 class PacienteController extends Controller
 {
@@ -84,9 +88,8 @@ class PacienteController extends Controller
 
     //$request->session()->flash('mensagem', "Atualizado com sucesso!");
 
-
     session()->flash('mensagem', 'Atualizado com sucesso!');
-    return redirect()->route('pacientes.index');
+    return redirect()->route('pacientes.index')->with('fireAlert', true);
   }
 
   /**
