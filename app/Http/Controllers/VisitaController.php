@@ -128,7 +128,7 @@ class VisitaController extends Controller
 
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = request()->route('id');
-      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente_final, '../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
+      QrCode::format('png')->size(350)->margin(3)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente_final, '../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
 
 
       //Envia email para o visitante com o QR Code
@@ -280,7 +280,7 @@ class VisitaController extends Controller
 
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = $visita->id;
-      QrCode::format('png')->size(350)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente_final, '../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
+      QrCode::format('png')->size(350)->margin(3)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente_final, '../resources/qrcodes/qrcode_visita_v' . $id_visita . '.png');
 
 
 
