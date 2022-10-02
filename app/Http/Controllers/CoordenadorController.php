@@ -38,11 +38,8 @@ class CoordenadorController extends Controller
     public function store(StoreCoordenadorRequest $request)
     {
       Coordenador::create($request->all());
-      //$request->session()->flash('mensagem', "sucesso");
-      //session()->flash('mensagem', "Cadastrado com sucesso!");
-      //toastr()->info('welcome admin!', 'err');
-      //Toastr::success('Post added successfully :)','Success');
-      return redirect()->route('coordenadors.index')->with(['mensagem' => 'Adicionado com sucesso']);
+      toast('Cadastrado com sucesso!','success');
+      return redirect()->route('coordenadors.index');
     }
 
     /**
@@ -78,11 +75,7 @@ class CoordenadorController extends Controller
     {
       $coordenador->fill($request->all());
       $coordenador->save();
-
-      //$request->session()->flash('mensagem', "Atualizado com sucesso!");
-
-
-      session()->flash('mensagem', 'Atualizado com sucesso!');
+      toast('Atualizado com sucesso!','success');
       return redirect()->route('coordenadors.index');
     }
 
@@ -95,7 +88,7 @@ class CoordenadorController extends Controller
     public function destroy(Coordenador $coordenador)
     {
       $coordenador->delete();
-      session()->flash('mensagem', 'Excluído com sucesso!');
+      toast('Excluído com sucesso!','success');
       return redirect()->route('coordenadors.index');
     }
 

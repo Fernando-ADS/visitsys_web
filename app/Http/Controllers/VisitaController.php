@@ -160,7 +160,7 @@ class VisitaController extends Controller
       });
     }
 
-    session()->flash('mensagem', 'Cadastrado com sucesso!');
+    toast('Cadastrado com sucesso!','success');
     return redirect()->route('visitas.index');
   }
 
@@ -317,7 +317,7 @@ class VisitaController extends Controller
     $visita->fill(array('status_visita' => $status_visita, 'paciente_id' => $paciente_id, 'user_id' => $user_id, 'data_visita' => $data_visita, 'hora_visita' => $hora_visita));
     $visita->save();
 
-    session()->flash('mensagem', 'Atualizado com sucesso!');
+    toast('Atualizado com sucesso!','success');
     return redirect()->route('visitas.index');
   }
 
@@ -336,7 +336,7 @@ class VisitaController extends Controller
   public function destroy(Visita $visita)
   { {
       $visita->delete();
-      session()->flash('mensagem', 'Excluído com sucesso!');
+      toast('Excluído com sucesso!','success');
       return redirect()->route('visitas.index');
     }
   }

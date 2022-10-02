@@ -3,6 +3,7 @@
 
 <head>
 
+
     {{-- Base Meta Tags --}}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,7 +76,10 @@
 
 <body class="@yield('classes_body')" @yield('body_data')>
 
+
+    
     {{-- Body Content --}}
+    
     @yield('body')
 
     {{-- Base Scripts --}}
@@ -101,10 +105,10 @@
         @endif
     @endif
 
+
     {{-- Custom Scripts --}}
     @yield('adminlte_js')
-
-
+    @include('sweetalert::alert')
 
 </body>
 

@@ -55,7 +55,7 @@ class AgendamentoController extends Controller
   public function store(StoreAgendamentoRequest $request)
   {
     Agendamento::create($request->all());
-    session()->flash('mensagem', 'Cadastrado com sucesso!');
+    toast('Cadastrado com sucesso!','success');
     return redirect()->route('agendamentos.index');
   }
 
@@ -218,7 +218,7 @@ class AgendamentoController extends Controller
       });
     }
 
-    session()->flash('mensagem', 'Atualizado com sucesso!');
+    toast('Atualizado com sucesso!','success');
     return redirect()->route('agendamentos.index');
   }
 
@@ -232,7 +232,7 @@ class AgendamentoController extends Controller
   public function destroy(Agendamento $agendamento)
   { {
       $agendamento->delete();
-      session()->flash('mensagem', 'Excluído com sucesso!');
+      toast('Excluído com sucesso!','success');
       return redirect()->route('agendamentos.index');
     }
   }

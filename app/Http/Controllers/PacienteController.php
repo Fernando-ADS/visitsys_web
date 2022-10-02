@@ -8,9 +8,11 @@ use App\Models\Visita;
 use App\Models\Agendamento;
 use App\Http\Requests\StorePacienteRequest;
 use App\Http\Requests\UpdatePacienteRequest;
-use JeroenNoten\LaravelAdminLte\View\Components\Widget\Alert;
+//use JeroenNoten\LaravelAdminLte\View\Components\Widget\Alert;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Brian2694\Toastr\Toastr;
+use TJGazel\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 
 class PacienteController extends Controller
@@ -45,11 +47,8 @@ class PacienteController extends Controller
   public function store(StorePacienteRequest $request)
   {
     Paciente::create($request->all());
-    //$request->session()->flash('mensagem', "sucesso");
-    //session()->flash('mensagem', "Cadastrado com sucesso!");
-    //toastr()->info('welcome admin!', 'err');
-    //Toastr::success('Post added successfully :)','Success');
-    return redirect()->route('pacientes.index')->with(['mensagem' => 'Adicionado com sucesso']);
+    toast('Cadastrado com sucesso!','success');
+    return redirect()->route('pacientes.index');
   }
 
   /**
@@ -86,10 +85,8 @@ class PacienteController extends Controller
     $paciente->fill($request->all());
     $paciente->save();
 
-    //$request->session()->flash('mensagem', "Atualizado com sucesso!");
-
-    session()->flash('mensagem', 'Atualizado com sucesso!');
-    return redirect()->route('pacientes.index')->with('fireAlert', true);
+    toast('Atualizado com sucesso!','success');
+    return redirect()->route('pacientes.index');
   }
 
   /**
@@ -101,12 +98,12 @@ class PacienteController extends Controller
   public function destroy(Paciente $paciente)
   {
     if($paciente->visitas->count()>0 || $paciente->agendamentos->count()>0){
-      session()->flash('mensagem', 'Não é permitido excluir! Existem associacões!');
+      toast('Não é permitido remover esse paciente!','error');
     }
 
     else {
       $paciente->delete();
-      session()->flash('mensagem', 'Excluído com sucesso!');
+      toast('Excluído com sucesso!','success');
     }
     return redirect()->route('pacientes.index');
   }

@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
+        toast('Bem-vindo!','success');
         return view('home');
+
     }
 }

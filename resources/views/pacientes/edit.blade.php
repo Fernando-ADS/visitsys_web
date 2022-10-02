@@ -94,6 +94,8 @@
           <i class="fa fa-check"></i> Atualizar
         </button>
 
+        
+
         <button class="btn btn-danger" type="reset">
           <i class="fa fa-minus"></i> Limpar
         </button>
