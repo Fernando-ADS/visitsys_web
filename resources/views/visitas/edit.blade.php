@@ -67,7 +67,7 @@
       <div class="row">
         <div class="col-sm-6">
           <label for="data_visita" id="labelData">Data:</label>
-          <input type="date" name="data_visita" id="data_visita" value="{{$visita->data_visita}}" class="form-control" required>
+          <input type="date" name="data_visita" id="data_visita" value="{{$visita->data_visita}}" class="form-control" required >
         </div>
 
 
@@ -137,19 +137,43 @@
       </div>
 
       <br>
-
-      <div class="form-group">
-        <div>
+      
+      <div class="btn-group">
+        <div class="col-xs">
           <button class="btn btn-info" type="submit">
-            <i class="fa fa-plus"></i> Atualizar
-          </button>
-
-          <button class="btn btn-danger" role="button" href="{{route('visitas.index')}}">
-            <i class="fa fa-times"></i> Cancelar
+            <i class="fa fa-check"></i> Atualizar
           </button>
         </div>
-      </div>
+
     </form>
+    <div class="col-md">
+      <a class="btn btn-secondary" role="button" href="{{route('visitas.index')}}">
+        <i class="fa fa-arrow-left"></i> Voltar
+      </a>
+    </div>
+
+    <form name="frmDelete" action="{{route('visitas.destroy', $visita->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
+
+      @csrf
+      @method('DELETE')
+
+      <div>
+        <button class="btn btn-danger" type="submit">
+          <i class="fa fa-trash"></i> Excluir
+        </button>
+      </div>
+
   </div>
 
-  @endsection
+</div>
+<br>
+</div>
+</form>
+</div>
+
+
+
+@endsection
+<!--
+Fernando Aparecido da Silva - 1518291
+-->

@@ -29,7 +29,7 @@ class AgendamentoController extends Controller
   public function index()
   {
     //$this->authorize('is_admin');
-    $agendamentos = Agendamento::orderBy('id')->get();
+    $agendamentos = Agendamento::orderBy('paciente_id')->orderBy('data_agendamento')->orderBy('hora_agendamento')->get();
     return view('agendamentos.index', ['agendamentos' => $agendamentos]);
   }
 

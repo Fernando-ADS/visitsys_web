@@ -74,7 +74,7 @@
 <div class="row">
   <div class="col-sm-6">
     <label for="data_visita" id="labelData">Data:</label>
-    <input type="date" name="data_visita" id="data_visita" value="" class="form-control" required>
+    <input type="date" name="data_visita" id="data_visita" value="" class="form-control" required min='2022-10-17'>
   </div>
 
   <!--

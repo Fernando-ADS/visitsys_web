@@ -119,8 +119,8 @@
                   }
                   else {
                     alert('Paciente não encontrado!');
-                    paciente_id.value = null;
-                    inputPacInvi.value = null;
+                    paciente_id.value = 1;
+                    //inputPacInvi.value = null;
                   }
                 }
               });
@@ -205,7 +205,7 @@
       <div class="row">
         <div class="col-sm-6">
           <label for="data_agendamento" id="labelData">Data:</label>
-          <input type="date" name="data_agendamento" id="data_agendamento" value="" class="form-control" required>
+          <input type="date" name="data_agendamento" id="data_agendamento" value="" class="form-control" required min='2022-10-17'>
         </div>
 
 

@@ -22,7 +22,7 @@ class VisitaController extends Controller
    */
   public function index()
   {
-    $visitas = Visita::orderBy('id')->get();
+    $visitas = Visita::orderBy('paciente_id')->orderBy('data_visita')->orderBy('hora_visita')->get();
     return view('visitas.index', ['visitas' => $visitas]);
   }
 

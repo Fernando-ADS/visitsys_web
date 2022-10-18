@@ -47,18 +47,37 @@
 
     <br>
 
-    <div>
-        <button class="btn btn-info" type="submit" >
-            <i class="fa fa-check" ></i> Atualizar
-        </button>
+    <div class="btn-group">
+        <div class="col-xs">
+          <button class="btn btn-info" type="submit">
+            <i class="fa fa-check"></i> Atualizar
+          </button>
+        </div>
 
-        <button class="btn btn-danger" type="reset" >
-            <i class="fa fa-minus"></i> Limpar
-        </button>
+    </form>
+    <div class="col-md">
+      <a class="btn btn-secondary" role="button" href="{{route('coordenadors.index')}}">
+        <i class="fa fa-arrow-left"></i> Voltar
+      </a>
     </div>
 
+    <form name="frmDelete" action="{{route('coordenadors.destroy', $coordenador->id)}}" method="post" onsubmit="return confirm('Deseja excluir?')">
+
+      @csrf
+      @method('DELETE')
+
+      <div>
+        <button class="btn btn-danger" type="submit">
+          <i class="fa fa-trash"></i> Excluir
+        </button>
+      </div>
+
+  </div>
+
 </div>
-  </form>
+<br>
+</div>
+</form>
 </div>
 
 
