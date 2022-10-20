@@ -9,6 +9,8 @@
 @endcan
 -->
 
+
+<!--
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li data-target="#carousel" data-slide-to="0" class="active"></li>
@@ -45,8 +47,11 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
+-->
 
-
+<div style="display:flex; justify-content:center; align-items:center; height:80vh">
+  <img class="img" src="../../vendor/adminlte/dist/img/VisitSys_logo.png" width="750" alt="logo">
+</div>
 
 @stop
 

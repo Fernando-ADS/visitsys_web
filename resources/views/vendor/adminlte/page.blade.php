@@ -12,7 +12,7 @@
 @section('body_data', $layoutHelper->makeBodyData())
 
 @section('body')
-    <div class="wrapper">
+    <div class="wrapper" >
 
         {{-- Top Navbar --}}
         @if($layoutHelper->isLayoutTopnavEnabled())
