@@ -16,14 +16,17 @@ class CreateAgendamentosTable extends Migration
         Schema::create('agendamentos', function (Blueprint $table) {
           $table->id();
           $table->string('status_agendamento')->default('Solicitado');
-          $table->unsignedBigInteger('paciente_id')->nullable();
+          $table->unsignedBigInteger('paciente_id');
           $table->unsignedBigInteger('user_id');
           $table->date('data_agendamento');
           $table->time('hora_agendamento');
           $table->timestamps();
+          
+          $table->string('nome');
 
           $table->foreign('paciente_id')->references('id')->on('pacientes');
           $table->foreign('user_id')->references('id')->on('users');
+          
         });
     }
 

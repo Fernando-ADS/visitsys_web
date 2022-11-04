@@ -70,26 +70,26 @@
             @can('is_admin')
             @foreach($agendamentos as $e)
             <tr>
-
               <td>
                 @if($e->status_agendamento == 1)Solicitado
                 @elseif($e->status_agendamento == 2)Aprovado
                 @elseif($e->status_agendamento == 3)Negado
-                @endif</td>
+                @endif
+              </td>
 
               <td>{{$e->paciente->nome}}</td>
               <td>{{$e->user->name}}</td>
               <td>{{date('d/m/Y', strtotime($e->data_agendamento))}}</td>
               <td>
-              @if($e->hora_agendamento == 1)08:00
-              @elseif($e->hora_agendamento == 2)09:00
-              @elseif($e->hora_agendamento == 3)10:00
-              @elseif($e->hora_agendamento == 4)14:00
-              @elseif($e->hora_agendamento == 5)15:00
-              @elseif($e->hora_agendamento == 6)16:00
-              @elseif($e->hora_agendamento == 7)17:00
-              @endif
-            </td>
+                @if($e->hora_agendamento == 1)08:00
+                @elseif($e->hora_agendamento == 2)09:00
+                @elseif($e->hora_agendamento == 3)10:00
+                @elseif($e->hora_agendamento == 4)14:00
+                @elseif($e->hora_agendamento == 5)15:00
+                @elseif($e->hora_agendamento == 6)16:00
+                @elseif($e->hora_agendamento == 7)17:00
+                @endif
+              </td>
 
               <td>
                 <a href="{{route('agendamentos.edit', $e->id)}}">
@@ -114,23 +114,34 @@
                 @if($e->status_agendamento == 1)Solicitado
                 @elseif($e->status_agendamento == 2)Aprovado
                 @elseif($e->status_agendamento == 3)Negado
-                @endif</td>
+                @endif
+              </td>
 
-              <td>{{$e->paciente->nome}}</td>
+
+              <td>
+
+              @if($e->paciente->id == 999)
+                  {{$e->nome}}
+              @elseif($e->paciente->id != 999)
+                  {{$e->paciente->nome}}
+              @endif
+            
+            </td>
+
               <td>{{$e->user->name}}</td>
 
               <td>{{date('d/m/Y', strtotime($e->data_agendamento))}}</td>
-              
+
               <td>
-              @if($e->hora_agendamento == 1)08:00
-              @elseif($e->hora_agendamento == 2)09:00
-              @elseif($e->hora_agendamento == 3)10:00
-              @elseif($e->hora_agendamento == 4)14:00
-              @elseif($e->hora_agendamento == 5)15:00
-              @elseif($e->hora_agendamento == 6)16:00
-              @elseif($e->hora_agendamento == 7)17:00
-              @endif
-            </td>
+                @if($e->hora_agendamento == 1)08:00
+                @elseif($e->hora_agendamento == 2)09:00
+                @elseif($e->hora_agendamento == 3)10:00
+                @elseif($e->hora_agendamento == 4)14:00
+                @elseif($e->hora_agendamento == 5)15:00
+                @elseif($e->hora_agendamento == 6)16:00
+                @elseif($e->hora_agendamento == 7)17:00
+                @endif
+              </td>
 
               <td>
                 <a href="{{route('agendamentos.edit', $e->id)}}">

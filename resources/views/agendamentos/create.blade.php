@@ -61,12 +61,26 @@
         @endcan
 
 
+
+        <script>
+          function transferirValor() {
+            jQuery('#nome').val(jQuery('#inputPacInvi').val());
+          }
+        </script>
+
+
+
+        <!--INPUT INVISÍVEL PARA PEGAR NOME DO PACIENTE-->
+        <input type="hidden" name="nome" id="nome" value="" class="form-control">
+
+
+
         <!--INPUT PARA USUARIO ESCREVER O NOME DO PACIENTE-->
         @can('is_user')
         <div class="row">
           <div class="col-sm-6">
             <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
-            <input type="text" name="inputPacInvi" id="inputPacInvi" value="" class="form-control" required placeholder="Digite o nome do paciente e clique no botão">
+            <input type="text" name="inputPacInvi" id="inputPacInvi" value="" class="form-control" onkeyup="transferirValor()" required placeholder="Digite o nome do paciente e clique no botão">
           </div>
 
           <div class="col-sm-6">
@@ -79,14 +93,16 @@
           @endcan
 
 
+
           <!--CABEÇALHO CRSFTOKEN-->
           <script type="text/javascript">
-          $.ajaxSetup({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-          });
+            $.ajaxSetup({
+              headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+              }
+            });
           </script>
+
 
 
           <!--INPUT INVISÍVEL PARA ENVIAR O ID DO PACIENTE PARA O FORMULÁRIO-->
@@ -95,44 +111,50 @@
           @endcan
 
 
+
+
           <!--FUNÇÃO AJAX PEGA PACIENTE-->
           @can('is_user')
           <script>
-          $(function(){
-            $(document).on("click", "#validaPaciente", function(event){
-              event.preventDefault();
-              var inputPaciente =  $('#inputPacInvi').val();
+            $(function() {
+              $(document).on("click", "#validaPaciente", function(event) {
+                botao = 1;
+                event.preventDefault();
+                var inputPaciente = $('#inputPacInvi').val();
+                nome.value = $('#inputPacInvi').val();
+                $('#botaoform').attr('disabled', false);
 
-              $.ajax({
-                url: "{{route('agendamentos.procuraPaciente')}}",
-                type: "post",
-                data:{
-                  'nome_paciente':inputPaciente,
-                  _token:'{{ csrf_token() }}'
-                },
-                dataType: 'json',
-                success: function(response){
-                  if(response.success === true){
-                    alert('Paciente encontrado!');
-                    paciente_id.value = response.id;
-                    //$("#formAgendamento").submit();
+
+                $.ajax({
+                  url: "{{route('agendamentos.procuraPaciente')}}",
+                  type: "post",
+                  data: {
+                    'nome_paciente': inputPaciente,
+                    _token: '{{ csrf_token() }}'
+                  },
+                  dataType: 'json',
+                  success: function(response) {
+                    if (response.success === true) {
+                      //alert('Paciente encontrado!');
+                      paciente_id.value = response.id;
+                      //$("#formAgendamento").submit();
+                    } else {
+                      //alert('Paciente não encontrado!');
+                      paciente_id.value = 999;
+                      //nome.value = $('#inputPacInvi').val();
+                      //inputPacInvi.value = null;
+                    }
                   }
-                  else {
-                    alert('Paciente não encontrado!');
-                    paciente_id.value = 1;
-                    //inputPacInvi.value = null;
-                  }
-                }
+                });
               });
             });
-          });
           </script>
           @endcan
 
 
           @can('is_admin')
           <div class="col-sm-6">
-            <label for="user_id" id="labeluser_id">user:</label>
+            <label for="user_id" id="labeluser_id">Visitante:</label>
             <select name="user_id" id="user_id" class="form-control">
 
               @foreach($users as $e)
@@ -145,10 +167,11 @@
 
 
 
+
         @can('is_user')
         <div class="col-sm-12">
           <label for="user_id" id="labeluser_id">Visitante:</label>
-          <input type="text" name="inputVisInvi" id="inputVisInvi" value= "<?php echo Auth::user()->name;?>" class="form-control" required disabled>
+          <input type="text" name="inputVisInvi" id="inputVisInvi" value="<?php echo Auth::user()->name; ?>" class="form-control" required disabled>
         </div>
       </div>
       @endcan
@@ -156,10 +179,10 @@
 
       <!--INPUT INVISÍVEL PARA ENVIAR O ID DO VISITANTE PARA O FORMULÁRIO-->
       @can('is_user')
-      <input type="hidden" name="user_id" id="user_id" value= "<?php echo Auth::user()->id;?>" class="form-control" required>
+      <input type="hidden" name="user_id" id="user_id" value="<?php echo Auth::user()->id; ?>" class="form-control" required>
       @endcan
 
-      
+
 
       <!--FUNÇÃO AJAX PEGA VISITANTE
       @can('is_user')
@@ -228,6 +251,7 @@
       <br>
 
 
+
       <div class="form-group">
         @can('is_admin')
         <div>
@@ -240,22 +264,22 @@
 
           @can('is_user')
           <div>
-            <button class="btn btn-info" type="submit">
+            <button class="btn btn-info" type="submit" disabled id="botaoform">
               <i class="fa fa-plus"></i> Inserir
             </button>
             @endcan
 
 
-            <button class="btn btn-danger" type="reset" >
+            <button class="btn btn-danger" type="reset">
               <i class="fa fa-minus"></i> Limpar
             </button>
           </div>
         </div>
 
-      </form>
-    </div>
+    </form>
+  </div>
 
-    @endsection
-    <!--
+  @endsection
+  <!--
     Fernando Aparecido da Silva - 1518291
   -->
