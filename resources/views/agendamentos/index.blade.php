@@ -77,7 +77,14 @@
                 @endif
               </td>
 
-              <td>{{$e->paciente->nome}}</td>
+              <td>
+                @if($e->paciente->id == 999)
+                {{$e->nome}}
+                @elseif($e->paciente->id != 999)
+                {{$e->paciente->nome}}
+                @endif
+              
+              </td>
               <td>{{$e->user->name}}</td>
               <td>{{date('d/m/Y', strtotime($e->data_agendamento))}}</td>
               <td>
@@ -120,13 +127,13 @@
 
               <td>
 
-              @if($e->paciente->id == 999)
-                  {{$e->nome}}
-              @elseif($e->paciente->id != 999)
-                  {{$e->paciente->nome}}
-              @endif
-            
-            </td>
+                @if($e->paciente->id == 999)
+                {{$e->nome}}
+                @elseif($e->paciente->id != 999)
+                {{$e->paciente->nome}}
+                @endif
+
+              </td>
 
               <td>{{$e->user->name}}</td>
 

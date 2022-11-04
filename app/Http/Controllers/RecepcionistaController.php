@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Recepcionista;
 use App\Http\Requests\StoreRecepcionistaRequest;
 use App\Http\Requests\UpdateRecepcionistaRequest;
+use App\Models\User;
+
 
 class RecepcionistaController extends Controller
 {
@@ -38,6 +40,24 @@ class RecepcionistaController extends Controller
   public function store(StoreRecepcionistaRequest $request)
   {
     Recepcionista::create($request->all());
+
+    //Model User
+    $name = $request->input('nome');
+    $email = $request->input('email');
+    $password = $request->input('email');
+
+    $tipo = 'admin';
+
+    $cpf = $request->input('cpf');
+    $telefone = $request->input('telefone');
+    $endereco = $request->input('endereco');
+
+    $novo_user = new User();
+    $novo_user->fill(array('name' => $name, 'email' => $email, 'password' => $password, 'tipo' => $tipo, 'cpf' => $cpf, 'telefone' => $telefone, 'endereco' => $endereco));
+    $novo_user->save();
+
+
+
     toast('Cadastrado com sucesso!','success');
     return redirect()->route('recepcionistas.index')->with(['mensagem' => 'Adicionado com sucesso']);
   }

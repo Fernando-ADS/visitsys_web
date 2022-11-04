@@ -70,7 +70,7 @@
         <div class="col-sm-6">
           <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
           <select name="paciente_id" id="paciente_id" class="form-control">
-            <option value="{{$agendamento->paciente->id}}">{{$agendamento->paciente->nome}}</option>
+          <option value="{{$agendamento->nome}}">{{$agendamento->nome}}</option>
             @foreach($pacientes as $paciente)
             <option value="{{$paciente->id}}">{{$paciente->nome}}</option>
             @endforeach
