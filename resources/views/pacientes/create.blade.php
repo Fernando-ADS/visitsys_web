@@ -41,15 +41,18 @@
 
 
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <label for="endereco" id="labelEndereco">Endereço:</label>
           <input type="text" name="endereco" id="endereco" value="" class="form-control" required>
         </div>
+      </div>
 
 
+      <div class="row">
         <div class="col-sm-6">
           <label for="ala" id="labelAla">Ala:</label>
           <select name="ala" id="ala" class="form-control" required>
+            <option value="" disabled selected>Selecione</option>
             <option value="1">A</option>
             <option value="2">B</option>
             <option value="3">C</option>
@@ -58,7 +61,31 @@
             <option value="6">F</option>
           </select>
         </div>
+
+
+
+        <div class="col-sm-6">
+          <label for="quarto" id="labelQuarto">Quarto:</label>
+          <select name="quarto" id="quarto" class="form-control" required>
+            <option value="" disabled selected>Selecione</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+        </div>
       </div>
+
+
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="observacoes" id="labelObservacoes">Observações:</label>
+          <input type="text" name="observacoes" id="observacoes" value="" class="form-control">
+        </div>
+      </div>
+
 
       <br>
 

@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
               <label for="inputMessage">Messagem</label>
-              <textarea id="inputMessage" class="form-control" rows="1" required></textarea>
+              <textarea id="inputMessage" class="form-control" rows="3" required></textarea>
             </div>
             <div class="form-group">
               <input type="submit" class="btn btn-info" value="Enviar">

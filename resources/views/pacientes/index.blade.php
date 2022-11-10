@@ -30,7 +30,7 @@
         <form method="GET" action="{{ route('pacientes.search') }}">
           @csrf
           <div class="input-group mb-3">
-            <input class="form-control" name="search"  placeholder="Informe o nome"/>
+            <input class="form-control" name="search"  placeholder="Digite o nome do paciente"/>
             <div class="input-group-append">
               <button class="btn btn-info" type="submit" >
                 <i class="fa fa-search"></i> Buscar
@@ -54,9 +54,10 @@
               <th>CPF</th>
               <th>Nome</th>
               <th>Ala</th>
+              <th>Quarto</th>
               <th>Telefone</th>
-              <th>Email</th>
               <th>Endereço</th>
+              <th>Observações</th>
               <th>Editar</th>
             </tr>
           </thead>
@@ -74,9 +75,10 @@
               @elseif($e->ala == 6)F
               @endif
             </td>
+            <td>{{$e->quarto}}</td>
             <td>{{$e->telefone}}</td>
-            <td>{{$e->email}}</td>
             <td>{{$e->endereco}}</td>
+            <td>{{$e->observacoes}}</td>
               <td >
                 <a href="{{route('pacientes.edit', $e->id)}}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#14a4bc" class="bi bi-info-square-fill" viewBox="0 0 16 16">
@@ -95,15 +97,4 @@
 
     </div>
   </div>
-  <?php if ((session()->has('mensagem'))): ?>
-    <script>
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: true,
-      timer: 1500
-    })
-    </script>
-  <?php endif; ?>
   @endsection

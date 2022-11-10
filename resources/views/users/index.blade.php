@@ -30,7 +30,7 @@
         <form method="GET" action="{{ route('users.search') }}">
           @csrf
           <div class="input-group mb-3">
-            <input class="form-control" name="search"  placeholder="Informe o nome"/>
+            <input class="form-control" name="search"  placeholder="Digite o nome do usuário"/>
             <div class="input-group-append">
               <button class="btn btn-info" type="submit" >
                 <i class="fa fa-search"></i> Buscar

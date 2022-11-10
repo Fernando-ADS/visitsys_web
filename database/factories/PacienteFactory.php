@@ -15,12 +15,15 @@ class PacienteFactory extends Factory
   public function definition()
   {
     return [
-      'cpf' => $this->faker->ean8(),
+      'cpf' => $this->faker->cpf(),
       'nome' => $this->faker->name(),
       'telefone' => $this->faker->phoneNumber(),
       'email' => $this->faker->email(),
       'endereco' => $this->faker->streetName(),
       'ala' => $this->getAla(),
+      'quarto' => $this->getQuarto(),
+      'observacoes' => $this->faker->text()
+
     ];
   }
 
@@ -30,4 +33,13 @@ class PacienteFactory extends Factory
     shuffle($alas);
     return $alas[0];
   }
+
+  private function getQuarto(): string
+  {
+    $quartos = ['1', '2', '3', '4', '5', '6'];
+    shuffle($quartos);
+    return $quartos[0];
+  }
+
+
 }

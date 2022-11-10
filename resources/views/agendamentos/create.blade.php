@@ -53,6 +53,7 @@
           <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
           <select name="paciente_id" id="paciente_id" class="form-control" required>
 
+           <option value="" disabled selected>Selecione</option>
             @foreach($pacientes as $e)
             <option value="{{$e->id}}">{{$e->nome}}</option>
             @endforeach
@@ -157,6 +158,7 @@
             <label for="user_id" id="labeluser_id">Visitante:</label>
             <select name="user_id" id="user_id" class="form-control">
 
+              <option value="" disabled selected>Selecione</option>
               @foreach($users as $e)
               <option value="{{$e->id}}">{{$e->name}}</option>
               @endforeach
@@ -235,6 +237,7 @@
         <div class="col-sm-6">
           <label for="hora_agendamento" id="labelhora_agendamento">Horário:</label>
           <select name="hora_agendamento" id="hora_agendamento" class="form-control" required>
+            <option value="" disabled selected>Selecione</option>
             <option value="1">08:00</option>
             <option value="2">09:00</option>
             <option value="3">10:00</option>

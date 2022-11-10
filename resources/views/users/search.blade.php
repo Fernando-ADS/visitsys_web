@@ -29,7 +29,7 @@
         <form method="GET" action="{{ route('users.search') }}">
           @csrf
           <div class="input-group mb-3">
-            <input class="form-control" name="search"  placeholder="Pesquisar"/>
+            <input class="form-control" name="search"  placeholder="Digite o nome do usuário"/>
             <div class="input-group-append">
               <button class="btn btn-info" type="submit" >
                 <i class="fa fa-search"></i> Buscar
@@ -49,11 +49,14 @@
     -->
 
       <div class="col-md-12 table-responsive">
-        <table class="table table-hover" style="text-align: center">
+      <table class="table table-hover" style="text-align: center">
           <thead>
             <tr>
               <th>Nome</th>
               <th>Email</th>
+              <th>CPF</th>
+              <th>Telefone</th>
+              <th>Endereço</th>
               <th>Perfil</th>
               <th>Editar</th>
             </tr>
@@ -63,6 +66,9 @@
             <tr>
               <td>{{$e->name}}</td>
               <td>{{$e->email}}</td>
+              <td>{{$e->cpf}}</td>
+              <td>{{$e->telefone}}</td>
+              <td>{{$e->endereco}}</td>
               <td>{{$e->tipo}}</td>
               <td >
                 <a href="{{route('users.edit', $e->id)}}">
@@ -75,7 +81,12 @@
 
             @endforeach
           </tbody>
+
         </table>
+
+
+
+
         <div>
           <a class="btn btn-secondary" role="button" href="{{route('users.index')}}">
             <i class="fa fa-arrow-left"></i> Voltar

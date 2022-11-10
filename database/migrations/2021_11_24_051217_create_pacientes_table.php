@@ -21,6 +21,11 @@ class CreatePacientesTable extends Migration
           $table->string('email',80);
           $table->string('endereco',80);
           $table->string('ala',6);
+
+          $table->string('quarto',6);
+          $table->string('observacoes',600)->default('Sem restrições');
+
+
           $table->timestamps();
         });
     }

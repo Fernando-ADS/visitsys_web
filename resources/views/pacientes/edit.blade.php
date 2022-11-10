@@ -41,16 +41,17 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <label for="endereco" id="labelEndereco">Endereço:</label>
           <input type="text" name="endereco" id="endereco" value="{{$paciente->endereco}}" class="form-control" required>
         </div>
+      </div>
 
 
+      <div class="row">
         <div class="col-sm-6">
           <label for="ala" id="labelAla">Ala:</label>
           <select name="ala" id="ala" class="form-control">
-            <option value="" disabled selected>Selecione</option>
 
             <option value="1" @if($paciente->ala == '1')
               selected
@@ -84,7 +85,54 @@
 
           </select>
         </div>
+
+
+        <div class="col-sm-6">
+          <label for="quarto" id="labelQuarto">Quarto:</label>
+          <select name="quarto" id="quarto" class="form-control">
+
+            <option value="1" @if($paciente->quarto == '1')
+              selected
+              @endif
+              >1</option>
+
+            <option value="2" @if($paciente->quarto == '2')
+              selected
+              @endif
+              >2</option>
+
+            <option value="3" @if($paciente->quarto == '3')
+              selected
+              @endif
+              >3</option>
+
+            <option value="4" @if($paciente->quarto == '4')
+              selected
+              @endif
+              >4</option>
+
+            <option value="5" @if($paciente->quarto == '5')
+              selected
+              @endif
+              >5</option>
+
+            <option value="6" @if($paciente->quarto == '6')
+              selected
+              @endif
+              >6</option>
+
+          </select>
+        </div>
       </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <label for="observacoes" id="labelObservacoes">Observações:</label>
+          <input type="text" name="observacoes" id="observacoes" value="{{$paciente->observacoes}}" class="form-control">
+        </div>
+      </div>
+
+
 
       <br>
 

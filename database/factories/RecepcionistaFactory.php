@@ -15,7 +15,7 @@ class RecepcionistaFactory extends Factory
     public function definition()
     {
         return [
-          'cpf' => $this->faker->ean8(),
+          'cpf' => $this->faker->cpf(),
           'nome' => $this->faker->name(),
           'telefone' => $this->faker->phoneNumber(),
           'email' => $this->faker->email(),

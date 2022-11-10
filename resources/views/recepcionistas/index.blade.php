@@ -30,7 +30,7 @@
         <form method="GET" action="{{ route('recepcionistas.search') }}">
           @csrf
           <div class="input-group mb-3">
-            <input class="form-control" name="search"  placeholder="Informe o nome"/>
+            <input class="form-control" name="search"  placeholder="Digite o nome do recepcionista"/>
             <div class="input-group-append">
               <button class="btn btn-info" type="submit" >
                 <i class="fa fa-search"></i> Buscar
@@ -80,20 +80,7 @@
           </tbody>
 
         </table>
-
-
-
     </div>
+    
   </div>
-  <?php if ((session()->has('mensagem'))): ?>
-    <script>
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Your work has been saved',
-      showConfirmButton: true,
-      timer: 1500
-    })
-    </script>
-  <?php endif; ?>
   @endsection

@@ -10,7 +10,7 @@ use App\Models\Agendamento;
 class Paciente extends Model
 {
   use HasFactory;
-  protected $fillable = ['cpf', 'nome', 'telefone','email','endereco','ala'];
+  protected $fillable = ['cpf', 'nome', 'telefone','email','endereco','ala','quarto','observacoes'];
 
   public function agendamentos(){
     return $this->hasMany(Agendamento::class);
