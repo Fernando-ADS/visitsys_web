@@ -41,9 +41,11 @@ class UserController extends Controller
    */
   public function store(StoreUserRequest $request)
   {
+    
     User::create($request->all());
-    toast('Cadastrado com sucesso!','success');
+    toast('Cadastrado com sucesso!', 'success');
     return redirect()->route('users.index');
+
   }
 
   /**
@@ -80,7 +82,7 @@ class UserController extends Controller
     $user->fill($request->all());
     $user->save();
 
-    toast('Atualizado com sucesso!','success');
+    toast('Atualizado com sucesso!', 'success');
     return redirect()->route('users.index');
   }
 
@@ -93,10 +95,10 @@ class UserController extends Controller
   public function destroy(User $user)
   {
     if ($user->visitas->count() > 0 || $user->agendamentos->count() > 0) {
-      toast('Não é permitido remover esse usuário!','error');
+      toast('Não é permitido remover esse usuário!', 'error');
     } else {
       $user->delete();
-      toast('Excluído com sucesso!','success');
+      toast('Excluído com sucesso!', 'success');
     }
     return redirect()->route('users.index');
   }

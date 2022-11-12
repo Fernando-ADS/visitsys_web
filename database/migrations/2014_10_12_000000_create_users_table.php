@@ -20,9 +20,12 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->enum('tipo', ['admin', 'user']);
-            $table->string('cpf',11);
+            $table->string('cpf',11)->nullable();
             $table->string('telefone',80);
             $table->string('endereco',80);
+
+            $table->string('foto');
+
             $table->rememberToken();
             $table->timestamps();
         });

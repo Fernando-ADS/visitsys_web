@@ -13,6 +13,8 @@ use App\Models\Visita;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\RegisterRequest;
+
 
 class RegisterController extends Controller
 {
@@ -59,9 +61,12 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'tipo' => ['enum'],
-            'cpf' => ['required', 'string', 'max:255'],
+            'cpf' => ['string', 'max:255'],
             'telefone' => ['required', 'string', 'max:255'],
             'endereco' => ['required', 'string', 'max:255'],
+            //'foto' => ['string'],
+
+            
         ]);
     }
 
@@ -73,6 +78,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+        $nomeFoto = $data['foto']->getClientOriginalName();
+        $extensao = $data['foto']->getClientOriginalExtension();
+        $nomeFotoNova = md5($nomeFoto . strtotime("now")) . "." . $extensao;
+        $data['foto']->move(public_path('fotosUsuarios'), $nomeFotoNova);
+        $data['foto'] = $nomeFotoNova;
+
+        
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -81,7 +95,50 @@ class RegisterController extends Controller
             'cpf' => $data['cpf'],
             'telefone' => $data['telefone'],
             'endereco' => $data['endereco'],
-        ]);
+            'foto' => $data['foto']
 
+        ]);
     }
+
+
+
+
+
+
+
 }
+
+
+
+/*
+    if ($request->hasFile('foto')) {
+      $requestImage = $request->foto;
+
+      $extensao = $requestImage->extension();
+      $nome = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extensao;
+      $requestImage->move('../resources/fotos', $nome);
+
+      $request->foto = $nome;
+    }
+    */
+
+     /* 
+    $fileNameToStore = 'casa';
+
+    if($request->hasFile('foto')) {
+      $filenameWithExt = $request->file('foto')->getClientOriginalName();
+      $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+      $extension = $request->file('foto')->getClientOriginalExtension();
+      $fileNameToStore = $filename . '_' . time() . '.' . $extension;
+      //$path = $request->file('foto')->storeAs('public/foto', $fileNameToStore);
+    } else {
+      dd('erro');
+    }
+
+        public function valida(RegisterRequest $request){
+        dd($request->all);
+    }
+
+
+    
+    $request->foto = $fileNameToStore;

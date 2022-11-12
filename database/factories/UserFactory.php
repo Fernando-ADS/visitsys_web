@@ -25,6 +25,9 @@ class UserFactory extends Factory
             'cpf' => $this->faker->cpf(),
             'telefone' => $this->faker->phoneNumber(),
             'endereco' => $this->faker->streetName(),
+
+            'foto' => $this->faker->imageUrl($width = 640, $height = 480),
+            
             'remember_token' => Str::random(10),
             
         ];

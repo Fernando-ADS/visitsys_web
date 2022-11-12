@@ -28,6 +28,7 @@ class User extends Authenticatable
         'cpf',
         'telefone',
         'endereco',
+        'foto',
     ];
 
     /**
