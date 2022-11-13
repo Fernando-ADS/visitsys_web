@@ -11,7 +11,7 @@ use App\Models\User;
 class Agendamento extends Model
 {
   use HasFactory;
-  protected $fillable = ['status_agendamento','paciente_id', 'user_id', 'data_agendamento','hora_agendamento','nome'];
+  protected $fillable = ['status_agendamento','paciente_id', 'user_id', 'data_agendamento','hora_agendamento','nome','parentesco'];
 
   public function paciente(){
     return $this->belongsTo(Paciente::class);

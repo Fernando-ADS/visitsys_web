@@ -59,6 +59,7 @@
               <th>Status</th>
               <th>Paciente</th>
               <th>Visitante</th>
+              <th>Parentesco</th>
               <th>Data</th>
               <th>Hora</th>
               <th>Editar</th>
@@ -82,6 +83,8 @@
 
               <td>{{$e->paciente->nome}}</td>
               <td>{{$e->user->name}}</td>
+
+              <td>{{$e->parentesco}}</td>
 
               <td>{{date('d/m/Y', strtotime($e->data_visita))}}</td>
               <td>

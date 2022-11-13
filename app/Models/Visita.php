@@ -11,7 +11,7 @@ use App\Models\User;
 class Visita extends Model
 {
   use HasFactory;
-  protected $fillable = ['status_visita','paciente_id', 'user_id', 'data_visita','hora_visita'];
+  protected $fillable = ['status_visita','paciente_id', 'user_id', 'data_visita','hora_visita','parentesco'];
 
   public function paciente(){
     return $this->belongsTo(Paciente::class);

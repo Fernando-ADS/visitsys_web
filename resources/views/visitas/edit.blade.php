@@ -20,29 +20,26 @@
         <select name="status_visita" id="status_visita" class="form-control">
           <option value="" disabled selected>Selecione</option>
 
-          <option value="1"
-          @if($visita->status_visita == '1')
-          selected
-          @endif
-          >Solicitado</option>
+          <option value="1" @if($visita->status_visita == '1')
+            selected
+            @endif
+            >Solicitado</option>
 
-          <option value="2"
-          @if($visita->status_visita == '2')
-          selected
-          @endif
-          >Aprovado</option>
+          <option value="2" @if($visita->status_visita == '2')
+            selected
+            @endif
+            >Aprovado</option>
 
-          <option value="3"
-          @if($visita->status_visita == '3')
-          selected
-          @endif
-          >Negado</option>
+          <option value="3" @if($visita->status_visita == '3')
+            selected
+            @endif
+            >Negado</option>
         </select>
       </div>
 
 
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
           <select name="paciente_id" id="paciente_id" class="form-control">
             <option value="{{$visita->paciente->id}}">{{$visita->paciente->nome}}</option>
@@ -62,12 +59,18 @@
             @endforeach
           </select>
         </div>
+
+        <div class="col-sm-6">
+          <label for="parentesco" id="labelParentesco">Parentesco:</label>
+          <input type="text" name="parentesco" id="parentesco" value="{{$visita->parentesco}}" class="form-control">
+        </div>
       </div>
+
 
       <div class="row">
         <div class="col-sm-6">
           <label for="data_visita" id="labelData">Data:</label>
-          <input type="date" name="data_visita" id="data_visita" value="{{$visita->data_visita}}" class="form-control" required >
+          <input type="date" name="data_visita" id="data_visita" value="{{$visita->data_visita}}" class="form-control" required>
         </div>
 
 
@@ -77,47 +80,40 @@
           <select name="hora_visita" id="hora_visita" class="form-control">
             <option value="" disabled selected>Selecione</option>
 
-            <option value="1"
-            @if($visita->hora_visita == '1')
-            selected
-            @endif
-            >08:00</option>
+            <option value="1" @if($visita->hora_visita == '1')
+              selected
+              @endif
+              >08:00</option>
 
-            <option value="2"
-            @if($visita->hora_visita == '2')
-            selected
-            @endif
-            >09:00</option>
+            <option value="2" @if($visita->hora_visita == '2')
+              selected
+              @endif
+              >09:00</option>
 
-            <option value="3"
-            @if($visita->hora_visita == '3')
-            selected
-            @endif
-            >10:00</option>
+            <option value="3" @if($visita->hora_visita == '3')
+              selected
+              @endif
+              >10:00</option>
 
-            <option value="4"
-            @if($visita->hora_visita == '4')
-            selected
-            @endif
-            >14:00</option>
+            <option value="4" @if($visita->hora_visita == '4')
+              selected
+              @endif
+              >14:00</option>
 
-            <option value="5"
-            @if($visita->hora_visita == '5')
-            selected
-            @endif
-            >15:00</option>
+            <option value="5" @if($visita->hora_visita == '5')
+              selected
+              @endif
+              >15:00</option>
 
-            <option value="6"
-            @if($visita->hora_visita == '6')
-            selected
-            @endif
-            >16:00</option>
+            <option value="6" @if($visita->hora_visita == '6')
+              selected
+              @endif
+              >16:00</option>
 
-            <option value="7"
-            @if($visita->hora_visita == '7')
-            selected
-            @endif
-            >17:00</option>
+            <option value="7" @if($visita->hora_visita == '7')
+              selected
+              @endif
+              >17:00</option>
           </select>
         </div>
 
@@ -137,7 +133,7 @@
       </div>
 
       <br>
-      
+
       <div class="btn-group">
         <div class="col-xs">
           <button class="btn btn-info" type="submit">

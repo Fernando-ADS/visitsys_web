@@ -58,6 +58,7 @@
               <th>Status</th>
               <th>Paciente</th>
               <th>Visitante</th>
+              <th>Parentesco</th>
               <th>Data</th>
               <th>Hora</th>
               <th>Editar</th>
@@ -85,8 +86,13 @@
                 @endif
               
               </td>
+
               <td>{{$e->user->name}}</td>
+
+              <td>{{$e->parentesco}}</td>
+
               <td>{{date('d/m/Y', strtotime($e->data_agendamento))}}</td>
+
               <td>
                 @if($e->hora_agendamento == 1)08:00
                 @elseif($e->hora_agendamento == 2)09:00
@@ -136,6 +142,10 @@
               </td>
 
               <td>{{$e->user->name}}</td>
+
+
+              <td>{{$e->parentesco}}</td>
+
 
               <td>{{date('d/m/Y', strtotime($e->data_agendamento))}}</td>
 

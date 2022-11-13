@@ -67,10 +67,10 @@
 
       @can('is_admin')
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
           <select name="paciente_id" id="paciente_id" class="form-control">
-          <option value="{{$agendamento->paciente->id}}">{{$agendamento->paciente->nome}}</option>
+            <option value="{{$agendamento->paciente->id}}">{{$agendamento->paciente->nome}}</option>
             @foreach($pacientes as $paciente)
             <option value="{{$paciente->id}}">{{$paciente->nome}}</option>
             @endforeach
@@ -82,7 +82,7 @@
 
         @can('is_user')
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
             <select name="paciente_id" id="paciente_id" class="form-control" disabled>
               <option value="{{$agendamento->nome}}">{{$agendamento->nome}}</option>
@@ -102,6 +102,13 @@
               @endforeach
             </select>
           </div>
+
+
+          <div class="col-sm-6">
+            <label for="parentesco" id="labelParentesco">Parentesco:</label>
+            <input type="text" name="parentesco" id="parentesco" value="{{$agendamento->parentesco}}" class="form-control">
+          </div>
+
         </div>
         @endcan
 
@@ -116,6 +123,11 @@
             <option value="{{$user->id}}">{{$user->name}}</option>
             @endforeach
           </select>
+        </div>
+
+        <div class="col-sm-6">
+          <label for="parentesco" id="labelParentesco">Parentesco:</label>
+          <input type="text" name="parentesco" id="parentesco" value="{{$agendamento->parentesco}}" class="form-control" disabled>
         </div>
       </div>
       @endcan
@@ -181,7 +193,7 @@
       </div>
 
       <br>
-      
+
       <div class="btn-group">
         <div class="col-xs">
           <button class="btn btn-info" type="submit">

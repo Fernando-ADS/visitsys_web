@@ -22,6 +22,8 @@ class CreateVisitasTable extends Migration
           $table->time('hora_visita');
           $table->timestamps();
 
+          $table->string('parentesco');
+
           $table->foreign('paciente_id')->references('id')->on('pacientes');
           $table->foreign('user_id')->references('id')->on('users');
         });

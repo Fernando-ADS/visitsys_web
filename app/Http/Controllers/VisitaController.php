@@ -68,7 +68,7 @@ class VisitaController extends Controller
       $user_id = $request->input('user_id');
       $data_visita = $request->input('data_visita');
       $hora_visita = $request->input('hora_visita');
-
+      $parentesco = $request->input('parentesco');
 
       //Pega o email do visitante correspondente
       $users = User::get();
@@ -160,7 +160,7 @@ class VisitaController extends Controller
       });
     }
 
-    toast('Cadastrado com sucesso!','success');
+    toast('Cadastrado com sucesso!', 'success');
     return redirect()->route('visitas.index');
   }
 
@@ -217,6 +217,7 @@ class VisitaController extends Controller
     $user_id = $request->input('user_id');
     $data_visita = $request->input('data_visita');
     $hora_visita = $request->input('hora_visita');
+    $parentesco = $request->input('parentesco');
 
 
     //Pega a ala do paciente correspondente
@@ -314,10 +315,10 @@ class VisitaController extends Controller
       });
     }
 
-    $visita->fill(array('status_visita' => $status_visita, 'paciente_id' => $paciente_id, 'user_id' => $user_id, 'data_visita' => $data_visita, 'hora_visita' => $hora_visita));
+    $visita->fill(array('status_visita' => $status_visita, 'paciente_id' => $paciente_id, 'user_id' => $user_id, 'data_visita' => $data_visita, 'hora_visita' => $hora_visita, 'parentesco' => $parentesco));
     $visita->save();
 
-    toast('Atualizado com sucesso!','success');
+    toast('Atualizado com sucesso!', 'success');
     return redirect()->route('visitas.index');
   }
 
@@ -336,7 +337,7 @@ class VisitaController extends Controller
   public function destroy(Visita $visita)
   { {
       $visita->delete();
-      toast('Excluído com sucesso!','success');
+      toast('Excluído com sucesso!', 'success');
       return redirect()->route('visitas.index');
     }
   }

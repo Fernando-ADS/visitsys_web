@@ -121,9 +121,10 @@ class AgendamentoController extends Controller
       $user_id = $request->input('user_id');
       $data_visita = $request->input('data_agendamento');
       $hora_visita = $request->input('hora_agendamento');
+      $parentesco = $request->input('parentesco');
 
       $nova_visita = new Visita();
-      $nova_visita->fill(array('status_visita' => $status_visita, 'paciente_id' => $paciente_id, 'user_id' => $user_id, 'data_visita' => $data_visita, 'hora_visita' => $hora_visita));
+      $nova_visita->fill(array('status_visita' => $status_visita, 'paciente_id' => $paciente_id, 'user_id' => $user_id, 'data_visita' => $data_visita, 'hora_visita' => $hora_visita,  'parentesco' => $parentesco));
       $nova_visita->save();
 
 

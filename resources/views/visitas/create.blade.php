@@ -49,7 +49,7 @@
 
 
         <div class="row">
-          <div class="col-sm-6">
+          <div class="col-sm-12">
             <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
             <select name="paciente_id" id="paciente_id" class="form-control">
 
@@ -70,6 +70,11 @@
               <option value="{{$e->id}}">{{$e->name}}</option>
               @endforeach
             </select>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="parentesco" id="labelparentesco">Parentesco:</label>
+            <input type="text" name="parentesco" id="parentesco" value="" class="form-control" required>
           </div>
         </div>
 

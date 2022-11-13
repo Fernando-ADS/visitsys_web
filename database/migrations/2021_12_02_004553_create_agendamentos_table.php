@@ -22,7 +22,9 @@ class CreateAgendamentosTable extends Migration
           $table->time('hora_agendamento');
           $table->timestamps();
           
-          $table->string('nome');
+          $table->string('nome')->nullable();
+
+          $table->string('parentesco');
 
           $table->foreign('paciente_id')->references('id')->on('pacientes');
           $table->foreign('user_id')->references('id')->on('users');

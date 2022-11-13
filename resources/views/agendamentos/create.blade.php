@@ -49,11 +49,11 @@
 
       @can('is_admin')
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-12">
           <label for="paciente_id" id="labelpaciente_id">Paciente:</label>
           <select name="paciente_id" id="paciente_id" class="form-control" required>
 
-           <option value="" disabled selected>Selecione</option>
+            <option value="" disabled selected>Selecione</option>
             @foreach($pacientes as $e)
             <option value="{{$e->id}}">{{$e->nome}}</option>
             @endforeach
@@ -164,19 +164,31 @@
               @endforeach
             </select>
           </div>
+
+          <div class="col-sm-6">
+            <label for="parentesco" id="labelparentesco">Parentesco:</label>
+            <input type="text" name="parentesco" id="parentesco" value="" class="form-control" required>
+          </div>
+
         </div>
         @endcan
 
 
 
-
         @can('is_user')
-        <div class="col-sm-12">
+        <div class="col-sm-6">
           <label for="user_id" id="labeluser_id">Visitante:</label>
           <input type="text" name="inputVisInvi" id="inputVisInvi" value="<?php echo Auth::user()->name; ?>" class="form-control" required disabled>
         </div>
+
+        <div class="col-sm-6">
+          <label for="parentesco" id="labelparentesco">Parentesco:</label>
+          <input type="text" name="parentesco" id="parentesco" value="" class="form-control" required>
+        </div>
+
       </div>
       @endcan
+
 
 
       <!--INPUT INVISÍVEL PARA ENVIAR O ID DO VISITANTE PARA O FORMULÁRIO-->

@@ -26,6 +26,8 @@ class AgendamentoFactory extends Factory
         'status_agendamento' => $this->getStatus(),
         
         'nome' => $this->faker->name(),
+
+        'parentesco' => $this->faker->firstNameMale(),
       ];
     }
 
