@@ -41,11 +41,10 @@ class UserController extends Controller
    */
   public function store(StoreUserRequest $request)
   {
-    
+
     User::create($request->all());
     toast('Cadastrado com sucesso!', 'success');
     return redirect()->route('users.index');
-
   }
 
   /**
@@ -79,8 +78,19 @@ class UserController extends Controller
    */
   public function update(UpdateUserRequest $request, User $user)
   {
+    if ($request->hasFile('foto')) {
+
+      $nomeFoto = $request->foto->getClientOriginalName();
+      $extensao = $request->foto->getClientOriginalExtension();
+      $nomeFotoNova = md5($nomeFoto . strtotime("now")) . "." . $extensao;
+      $request->foto->move(public_path('fotosUsuarios'), $nomeFotoNova);
+      $request->foto = $nomeFotoNova;
+    }
+
     $user->fill($request->all());
+    $user->foto = $nomeFotoNova;
     $user->save();
+
 
     toast('Atualizado com sucesso!', 'success');
     return redirect()->route('users.index');

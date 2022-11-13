@@ -91,7 +91,7 @@
 
 
 
-
+    <!--
     {{-- CPF --}}
     <div class="input-group mb-3">
         <input type="text" name="cpf" class="form-control @error('cpf') is-invalid @enderror" placeholder="CPF">
@@ -108,7 +108,7 @@
         </span>
         @enderror
     </div>
-
+    -->
 
 
     {{-- Telefone --}}

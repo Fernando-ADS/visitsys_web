@@ -66,7 +66,7 @@ class RegisterController extends Controller
             'endereco' => ['required', 'string', 'max:255'],
             //'foto' => ['string'],
 
-            
+
         ]);
     }
 
@@ -85,27 +85,19 @@ class RegisterController extends Controller
         $data['foto']->move(public_path('fotosUsuarios'), $nomeFotoNova);
         $data['foto'] = $nomeFotoNova;
 
-        
 
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'tipo' => 'user',
-            'cpf' => $data['cpf'],
+            'cpf' => null,
             'telefone' => $data['telefone'],
             'endereco' => $data['endereco'],
             'foto' => $data['foto']
 
         ]);
     }
-
-
-
-
-
-
-
 }
 
 

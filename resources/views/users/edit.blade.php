@@ -10,13 +10,28 @@
 
   <div class="container-fluid">
 
-    <form class="container-fluid " action="{{route('users.update', $user->id)}}" method="post">
+    <form class="container-fluid " action="{{route('users.update', $user->id)}}" method="post" enctype="multipart/form-data">
       @csrf
       @method('PUT')
 
+
+      <br>
+
+      <div >
+        <img class="profile-user-img img-fluid img-circle" src="../../../fotosUsuarios/{{$user->foto}}" alt="User profile picture">
+      </div>
+
+      <div>
+        <br>
+        <input type="file" name="foto" id="foto" class="form-control-file">
+     </div>
+
+      <br>
+
+
       <div class="row">
         <div class="col-sm-6">
-          <label for="name" id="labelName">name:</label>
+          <label for="name" id="labelName">Nome:</label>
           <input type="text" name="name" id="name" value="{{$user->name}}" class="form-control" required>
         </div>
       </div>
@@ -29,13 +44,14 @@
       </div>
 
 
+      <!--
       <div class="row">
         <div class="col-sm-6">
           <label for="cpf" id="labelcpf">CPF:</label>
           <input type="cpf" name="cpf" id="cpf" value="{{$user->cpf}}" class="form-control" required>
         </div>
       </div>
-
+      -->
 
       <div class="row">
         <div class="col-sm-6">
