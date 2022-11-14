@@ -19,7 +19,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h4>Listagem de Usuários</h4>
+    <h4>Listagem de Visitantes</h4>
   </div>
 
   <div class="card-body">
@@ -29,9 +29,9 @@
         <form method="GET" action="{{ route('users.search') }}">
           @csrf
           <div class="input-group mb-3">
-            <input class="form-control" name="search"  placeholder="Digite o nome do usuário"/>
+            <input class="form-control" name="search" placeholder="Digite o nome do usuário" />
             <div class="input-group-append">
-              <button class="btn btn-info" type="submit" >
+              <button class="btn btn-info" type="submit">
                 <i class="fa fa-search"></i> Buscar
               </button>
             </div>
@@ -49,31 +49,35 @@
     -->
 
       <div class="col-md-12 table-responsive">
-      <table class="table table-hover" style="text-align: center">
+        <table class="table table-hover" >
           <thead>
-            <tr>
+            <tr style="text-align: left">
+              <th style="text-align: center">Foto</th>
               <th>Nome</th>
               <th>Email</th>
-              <th>CPF</th>
               <th>Telefone</th>
               <th>Endereço</th>
-              <th>Perfil</th>
               <th>Editar</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style="text-align: left">
             @foreach($users as $e)
             <tr>
+
+              <td>
+                <div class="text-center">
+                  <img class="profile-user-img img-fluid img-circle" src="../../../fotosUsuarios/{{$e->foto}}" alt="User profile picture">
+                </div>
+              </td>
+
               <td>{{$e->name}}</td>
               <td>{{$e->email}}</td>
-              <td>{{$e->cpf}}</td>
               <td>{{$e->telefone}}</td>
               <td>{{$e->endereco}}</td>
-              <td>{{$e->tipo}}</td>
-              <td >
+              <td>
                 <a href="{{route('users.edit', $e->id)}}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#14a4bc" class="bi bi-info-square-fill" viewBox="0 0 16 16">
-                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+                    <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm8.93 4.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
                   </svg>
                 </a>
               </td>

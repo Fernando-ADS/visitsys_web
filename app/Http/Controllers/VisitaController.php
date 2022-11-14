@@ -349,4 +349,47 @@ class VisitaController extends Controller
 
     return view('visitas.search', compact('visitas'));
   }
+
+
+
+  public function filtrar()
+  {
+    $pesquisa = $_GET['filtrarStatus'];
+    $visitas = Visita::orderBy('paciente_id')->orderBy('data_visita')->orderBy('hora_visita')->get();
+
+    //Solicitado
+    if ($pesquisa == 1) {
+      $visitas = Visita::where('status_visita', $pesquisa)->get();
+      return view('visitas.index', compact('visitas'));
+    }
+
+    //Aprovado
+    elseif ($pesquisa == 2) {
+      $visitas = visita::where('status_visita', $pesquisa)->get();
+      return view('visitas.index', compact('visitas'));
+    }
+
+    //Negado
+    elseif ($pesquisa == 3) {
+      $visitas = visita::where('status_visita', $pesquisa)->get();
+      return view('visitas.index', compact('visitas'));
+    }
+
+    //Realizado
+    elseif ($pesquisa == 4) {
+      $visitas = visita::where('status_visita', $pesquisa)->get();
+      return view('visitas.index', compact('visitas'));
+    }
+
+    //Não Realizado
+    elseif ($pesquisa == 5) {
+      $visitas = visita::where('status_visita', $pesquisa)->get();
+      return view('visitas.index', compact('visitas'));
+    }
+
+    
+    else {
+      return view('visitas.index', compact('visitas'));
+    }
+  }
 }

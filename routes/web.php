@@ -74,12 +74,14 @@ Route::get('coordenadors/search', [App\Http\Controllers\CoordenadorController::c
 Route::resource('coordenadors', CoordenadorController::class)->middleware(['auth','check.is.admin']);
 
 Route::get('agendamentos/search', [App\Http\Controllers\AgendamentoController::class, 'search'])->name('agendamentos.search')->middleware('auth');
+Route::get('agendamentos/filtrar', [App\Http\Controllers\AgendamentoController::class, 'filtrar'])->name('agendamentos.filtrar')->middleware('auth');
 Route::resource('agendamentos', AgendamentoController::class)->middleware('auth');
 Route::post('agendamentos/procuraPaciente', [App\Http\Controllers\AgendamentoController::class, 'procuraPaciente'])->name('agendamentos.procuraPaciente')->middleware('auth');
 Route::post('agendamentos/procuraVisitante', [App\Http\Controllers\AgendamentoController::class, 'procuraVisitante'])->name('agendamentos.procuraVisitante')->middleware('auth');
 
 
 Route::get('visitas/search', [App\Http\Controllers\VisitaController::class, 'search'])->name('visitas.search')->middleware(['auth','check.is.admin']);
+Route::get('visitas/filtrar', [App\Http\Controllers\VisitaController::class, 'filtrar'])->name('visitas.filtrar')->middleware('auth');
 Route::resource('visitas', VisitaController::class)->middleware(['auth','check.is.admin']);
 
 Auth::routes();

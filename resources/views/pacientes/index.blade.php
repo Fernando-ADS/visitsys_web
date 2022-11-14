@@ -48,8 +48,8 @@
       <hr>
 
       <div class="col-md-12 table-responsive">
-        <table class="table table-hover" style="text-align: center">
-          <thead>
+        <table class="table table-hover" >
+          <thead style="text-align: left">
             <tr>
               <th>CPF</th>
               <th>Nome</th>
@@ -61,7 +61,7 @@
               <th>Editar</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style="text-align: left">
             @foreach($pacientes as $e)
             <tr>
               <td>{{$e->cpf}}</td>

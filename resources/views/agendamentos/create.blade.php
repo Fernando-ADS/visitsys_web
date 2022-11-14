@@ -23,6 +23,7 @@
       @csrf
 
       <!--RADIOBUTTON PARA STATUS DO AGENDAMENTO-->
+      @can('is_admin')
       <div>
         <label for="status_agendamento" id="labelstatus_agendamento">Status:</label>
 
@@ -43,8 +44,24 @@
           </div>
 
         </div>
-
       </div>
+      @endcan
+
+
+      @can('is_user')
+      <div>
+        <label for="status_agendamento" id="labelstatus_agendamento">Status:</label>
+
+        <div class="row">
+          <div class="col-2">
+            <input type="radio" name="status_agendamento" value="1" id="solicitado" checked>
+            <label for="solicitado">Solicitado</label>
+          </div>
+
+        </div>
+      </div>
+      @endcan
+
 
 
       @can('is_admin')

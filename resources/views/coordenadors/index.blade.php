@@ -48,7 +48,7 @@
       <hr>
 
       <div class="col-md-12 table-responsive">
-        <table class="table table-hover" style="text-align: center">
+        <table class="table table-hover" style="text-align: left">
           <thead>
             <tr>
               <th>CPF</th>

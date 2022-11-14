@@ -42,6 +42,18 @@
               <label for="negado">Negado</label>
             </div>
 
+            
+            <div class="col-2">
+              <input type="radio" name="status_visita" value="4" id="realizado">
+              <label for="realizado">Realizado</label>
+            </div>
+
+            
+            <div class="col-2">
+              <input type="radio" name="status_visita" value="5" id="nao realizado">
+              <label for="nao realizado">Não Realizado</label>
+            </div>
+
           </div>
 
         </div>

@@ -4,7 +4,7 @@
 <div class="card">
   <div class="card-header">
     <i class="fa fa-info-circle"></i>
-    <h5>Edição de usuários</h5>
+    <h5>Edição de Visitantes</h5>
     <hr class="m-b-5">
   </div>
 
@@ -17,14 +17,14 @@
 
       <br>
 
-      <div >
+      <div>
         <img class="profile-user-img img-fluid img-circle" src="../../../fotosUsuarios/{{$user->foto}}" alt="User profile picture">
       </div>
 
       <div>
         <br>
         <input type="file" name="foto" id="foto" class="form-control-file">
-     </div>
+      </div>
 
       <br>
 

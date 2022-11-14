@@ -4,7 +4,7 @@
 
 <div class="page-header">
   <div class="page-block">
-    <div class="row align-items-center">
+    <div class="row align-items-left">
       <div class="col-md-12">
         <div class="page-header-title">
           <h5 class="m-b-10">
@@ -19,7 +19,7 @@
 
 <div class="card">
   <div class="card-header">
-    <h4>Listagem de Usuários</h4>
+    <h4>Listagem de Visitantes</h4>
   </div>
 
 
@@ -50,19 +50,18 @@
     -->
 
       <div class="col-md-12 table-responsive">
-        <table class="table table-hover" style="text-align: center">
+        <table class="table table-hover" >
           <thead>
-            <tr>
-              <th>Foto</th>
+            <tr style="text-align: left">
+              <th style="text-align: center">Foto</th>
               <th>Nome</th>
               <th>Email</th>
               <th>Telefone</th>
               <th>Endereço</th>
-              <th>Perfil</th>
               <th>Editar</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody style="text-align: left">
             @foreach($users as $e)
             <tr>
               
@@ -76,7 +75,6 @@
               <td>{{$e->email}}</td>
               <td>{{$e->telefone}}</td>
               <td>{{$e->endereco}}</td>
-              <td>{{$e->tipo}}</td>
               <td>
                 <a href="{{route('users.edit', $e->id)}}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#14a4bc" class="bi bi-info-square-fill" viewBox="0 0 16 16">

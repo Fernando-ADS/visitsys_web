@@ -20,15 +20,13 @@
                             <img class="profile-user-img img-fluid img-circle" src="../../fotosUsuarios/{{Auth::user()->foto}}" alt="User profile picture">
                         </div>
                         <h3 class="profile-username text-center">{{ strtoupper(Auth::user()->name) }}</h3>
-                        <!--
-                  <p class="text-muted text-center">{{ __('content.user.enum.profile.' . Auth::user()->profile) }}</p>
-                -->
                         <ul class="list-group list-group-unbordered mb-3">
                             <br>
+                            <!--
                             <li class="list-group-item">
                                 <b>Perfil</b> <a class="float-right">{{ Auth::user()->tipo }}</a>
                             </li>
-
+                            -->
                             <li class="list-group-item">
                                 <b>Email</b> <a class="float-right">{{ Auth::user()->email }}</a>
                             </li>

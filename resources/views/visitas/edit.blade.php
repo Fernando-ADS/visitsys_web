@@ -34,6 +34,18 @@
             selected
             @endif
             >Negado</option>
+
+
+            <option value="4" @if($visita->status_visita == '4')
+            selected
+            @endif
+            >Realizado</option>
+
+            <option value="5" @if($visita->status_visita == '5')
+            selected
+            @endif
+            >Não Realizado</option>
+
         </select>
       </div>
 

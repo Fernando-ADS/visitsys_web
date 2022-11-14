@@ -47,13 +47,37 @@
         </a>
       </div>
 
-      <br>
-      <br>
+
+
+      <div class="row">
+        <div class="col-md-10">
+          <form method="GET" action="{{ route('agendamentos.filtrar') }}">
+            <select name="filtrarStatus" id="filtrarStatus" class="form-control">
+              <option value="0">Todos os status</option>
+              <option value="1">Solicitado</option>
+              <option value="2">Aprovado</option>
+              <option value="3">Negado</option>
+              </select>
+        </div>
+
+        <div class="col-md-2">
+          <button class="btn btn-info" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+
+        </form>
+      </div>
+
+
+
 
 
       <div class="col-md-12 table-responsive">
-        <table class="table table-hover" style="text-align: center">
-          <thead class="thead">
+        <br>
+        <br>
+        <table class="table table-hover">
+          <thead class="thead" style="text-align: left">
             <tr>
               <th>Status</th>
               <th>Paciente</th>
@@ -66,7 +90,7 @@
           </thead>
 
 
-          <tbody class="tbody">
+          <tbody class="tbody" style="text-align: left">
 
             @can('is_admin')
             @foreach($agendamentos as $e)
@@ -84,7 +108,7 @@
                 @elseif($e->paciente->id != 999)
                 {{$e->paciente->nome}}
                 @endif
-              
+
               </td>
 
               <td>{{$e->user->name}}</td>

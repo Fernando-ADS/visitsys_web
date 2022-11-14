@@ -51,9 +51,34 @@
       <br>
       <br>
 
+      <div class="row">
+        <div class="col-md-10">
+          <form method="GET" action="{{ route('visitas.filtrar') }}">
+            <select name="filtrarStatus" id="filtrarStatus" class="form-control">
+              <option value="0">Todos os status</option>
+              <option value="1">Solicitado</option>
+              <option value="2">Aprovado</option>
+              <option value="3">Negado</option>
+              <option value="4">Realizado</option>
+              <option value="5">Não Realizado</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+          <button class="btn btn-info" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+
+        </form>
+      </div>
+
+
 
       <div class="col-md-12 table-responsive">
-        <table class="table table-hover" style="text-align: center">
+        <br>
+        <br>
+        <table class="table table-hover" style="text-align: left">
           <thead class="thead">
             <tr>
               <th>Status</th>
@@ -79,6 +104,10 @@
 
                 @elseif($e->status_visita == 3)Negado
 
+                @elseif($e->status_visita == 4)Realizado
+
+                @elseif($e->status_visita == 5)Não Realizado
+                
                 @endif</td>
 
               <td>{{$e->paciente->nome}}</td>
@@ -88,15 +117,15 @@
 
               <td>{{date('d/m/Y', strtotime($e->data_visita))}}</td>
               <td>
-              @if($e->hora_visita == 1)08:00
-              @elseif($e->hora_visita == 2)09:00
-              @elseif($e->hora_visita == 3)10:00
-              @elseif($e->hora_visita == 4)14:00
-              @elseif($e->hora_visita == 5)15:00
-              @elseif($e->hora_visita == 6)16:00
-              @elseif($e->hora_visita == 7)17:00
-              @endif
-            </td>
+                @if($e->hora_visita == 1)08:00
+                @elseif($e->hora_visita == 2)09:00
+                @elseif($e->hora_visita == 3)10:00
+                @elseif($e->hora_visita == 4)14:00
+                @elseif($e->hora_visita == 5)15:00
+                @elseif($e->hora_visita == 6)16:00
+                @elseif($e->hora_visita == 7)17:00
+                @endif
+              </td>
 
               <td>
                 <a href="{{route('visitas.edit', $e->id)}}">

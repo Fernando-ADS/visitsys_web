@@ -55,7 +55,7 @@ class AgendamentoController extends Controller
   public function store(StoreAgendamentoRequest $request)
   {
     Agendamento::create($request->all());
-    toast('Cadastrado com sucesso!','success');
+    toast('Cadastrado com sucesso!', 'success');
     return redirect()->route('agendamentos.index');
   }
 
@@ -219,7 +219,7 @@ class AgendamentoController extends Controller
       });
     }
 
-    toast('Atualizado com sucesso!','success');
+    toast('Atualizado com sucesso!', 'success');
     return redirect()->route('agendamentos.index');
   }
 
@@ -233,7 +233,7 @@ class AgendamentoController extends Controller
   public function destroy(Agendamento $agendamento)
   { {
       $agendamento->delete();
-      toast('Excluído com sucesso!','success');
+      toast('Excluído com sucesso!', 'success');
       return redirect()->route('agendamentos.index');
     }
   }
@@ -291,4 +291,37 @@ class AgendamentoController extends Controller
     $retorno = json_encode($idVis);
     return ($retorno);
   }
+
+
+
+
+  public function filtrar()
+  {
+    $pesquisa = $_GET['filtrarStatus'];
+    $agendamentos = Agendamento::orderBy('paciente_id')->orderBy('data_agendamento')->orderBy('hora_agendamento')->get();
+
+    //Solicitado
+    if ($pesquisa == 1) {
+      $agendamentos = agendamento::where('status_agendamento', $pesquisa)->get();
+      return view('agendamentos.index', compact('agendamentos'));
+    }
+
+    //Aprovado
+    elseif ($pesquisa == 2) {
+      $agendamentos = agendamento::where('status_agendamento', $pesquisa)->get();
+      return view('agendamentos.index', compact('agendamentos'));
+    }
+
+    //Negado
+    elseif ($pesquisa == 3) {
+      $agendamentos = agendamento::where('status_agendamento', $pesquisa)->get();
+      return view('agendamentos.index', compact('agendamentos'));
+    }
+
+
+    else {
+      return view('agendamentos.index', compact('agendamentos'));
+    }
+  }
+  
 }
