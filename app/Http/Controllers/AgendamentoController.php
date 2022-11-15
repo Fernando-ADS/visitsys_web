@@ -198,7 +198,9 @@ class AgendamentoController extends Controller
 
       //Gera o QR Code com id da visita e salva na pasta
       $id_visita = $nova_visita->id;
-      QrCode::format('png')->size(350)->margin(3)->generate(' ' . date('d/m/Y', strtotime($data_visita)) . ' | ' . $hora_visita_final . 'h' . ' | Ala - ' . $ala_paciente_final, '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
+      QrCode::format('png')->size(400)->margin(3)->
+      generate('Paciente: '. $nome_paciente . ' | Data: ' . date('d/m/Y', strtotime($data_visita)) . ' - ' . $hora_visita_final . 'h' . ' | Ala: ' . $ala_paciente_final . ' | Quarto: ' . $quarto_paciente, 
+      '../resources/qrcodes/qrcode_visita_' . $id_visita . '.png');
 
 
 
