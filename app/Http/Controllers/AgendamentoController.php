@@ -164,6 +164,19 @@ class AgendamentoController extends Controller
       }
 
 
+      //Pega o quarto e nome do paciente correspondente
+      $pacientes_ = Paciente::get();
+      $quarto_paciente = null;
+      $nome_paciente = null;
+      foreach ($pacientes_ as $e) {
+        if ($e->id == $paciente_id) {
+          $quarto_paciente = $e->quarto;
+          $nome_paciente = $e->nome;
+        }
+      }
+
+
+
       //Calcula a hora para exibição
       $hora_visita_final = 0;
       if ($hora_visita == 1) {
@@ -190,7 +203,8 @@ class AgendamentoController extends Controller
 
 
       //Envia email para o visitante com o QR Code
-      Mail::send('email.visitaConfirmada', ['data_visita' => $data_visita, 'hora_visita' => $hora_visita], function ($mensagem) use ($email_user, $data_visita, $hora_visita, $id_visita) {
+      Mail::send('email.visitaConfirmada', ['data_visita' => $data_visita, 'hora_visita' => $hora_visita, 'ala' => $ala_paciente_final, 'quarto' => $quarto_paciente, 'nome' => $nome_paciente],
+      function ($mensagem) use ($email_user, $data_visita, $hora_visita, $id_visita) {
         $mensagem->from('visitsys.gestao@gmail.com', 'VisitSys | Gestão Hospitalar');
         $mensagem->to($email_user);
         $mensagem->subject('Resultado do Agendamento');

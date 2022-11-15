@@ -261,10 +261,11 @@
 <body style="margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0; width: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;" bgcolor="#f0f0f0">
   <span class="preheader-text" style="color: transparent; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; visibility: hidden; width: 0; display: none; mso-hide: all;"></span>
   <div style="display:none; font-size:0px; line-height:0px; max-height:0px; max-width:0px; opacity:0; overflow:hidden; visibility:hidden; mso-hide:all;"></div>
+  <!--TABELA PAGINA TODA-->
   <table border="0" align="center" cellpadding="0" cellspacing="0" width="100%" style="width:100%;max-width:100%;">
     <tr>
       <td align="center" bgcolor="#c7e9f7" data-composer>
-        <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="width:100%;max-width:100%;">
+        <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" width="50%" style="width:50%;max-width:50%;">
           <tr>
             <td align="center" bgcolor="#343e9e" class="container-padding">
               <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="row" width="580" style="width:580px;max-width:580px;">
@@ -321,6 +322,7 @@
           </tr>
         </table>
 
+
         <?php
         $horario = null;
         if ($hora_visita == 1) {
@@ -342,10 +344,9 @@
         }
         ?>
 
-
-        <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="width:100%;max-width:100%;">
+        <table border="0" align="right" cellpadding="0" cellspacing="0" role="presentation" width="50%" style="width:50%;max-width:50%;">
           <tr>
-            <td align="center" bgcolor="#d8eef7" class="container-padding">
+            <td align="center" bgcolor="#c7e9f7" class="container-padding">
               <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="row" width="580" style="width:580px;max-width:580px;">
                 <tr>
                   <td height="20" style="font-size:50px;line-height:10px;">&nbsp;</td>
@@ -366,11 +367,23 @@
                             <tr>
                               <td class="center-text" align="left" style="font-family:'Roboto Slab',Helvetica,serif;font-size:18px;line-height:28px;font-weight:400;font-style:normal;color:#000;text-decoration:none;letter-spacing:0px;">
                                 <div>
+                                  Nome do paciente: {{$nome}}
+                                </div>
+
+                                <div>
                                   Data: {{date('d/m/Y', strtotime($data_visita))}}
                                 </div>
 
                                 <div>
                                   Horário: {{$horario}}
+                                </div>
+
+                                <div>
+                                  Ala: {{$ala}}
+                                </div>
+
+                                <div>
+                                  Quarto: {{$quarto}}
                                 </div>
 
                               </td>
@@ -381,15 +394,76 @@
                     </table>
                   </td>
                 </tr>
+
               </table>
             </td>
           </tr>
         </table>
 
+
+        <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="width:100%;max-width:100%;">
+          <tr>
+            <td align="center" bgcolor="#d8eef7" class="container-padding">
+              <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" class="row" width="100%" style="width:90%;max-width:90%;">
+                <tr>
+                  <td height="20" style="font-size:50px;line-height:10px;">&nbsp;</td>
+                </tr>
+                <tr>
+                  <td class="center-text" align="center" style="font-family:'Roboto Slab',Helvetica,serif;font-size:28px;line-height:42px;font-weight:400;font-style:normal;color:#282828;text-decoration:none;letter-spacing:0px;">
+                    <div>
+                      Recomendações:
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="center">
+                    <table border="0" align="center" cellpadding="0" cellspacing="0" role="presentation" width="100%" style="width:100%;max-width:100%;">
+                      <tr>
+                        <td align="center">
+                          <table border="0" align="left" cellpadding="0" cellspacing="0" role="presentation" class="row" width="100%" style="width:100%;max-width:100%;">
+                            <tr>
+                              <td class="center-text" align="left" style="font-family:'Roboto Slab',Helvetica,serif;font-size:13px;line-height:28px;font-weight:400;font-style:normal;color:#000;text-decoration:none;letter-spacing:0px;">
+                                <div>
+                                  *Em caso de sintomas gripais (tosse, coriza, dor de garganta, febre não acesse a unidade hospitalar e procure atendimento médico;
+                                </div>
+
+                                <div>
+                                  *Mantenha o uso de máscara durante toda a permanência no hospital e higienize as mãos com frequência, particularmente antes e após o contato com o paciente;
+                                </div>
+
+                                <div>
+                                  *É importante estar com a vacinação contra a Covid-19 completa;
+                                </div>
+
+                                <div>
+                                  *Não é permitido levar alimentos, flores ou plantas para os leitos;
+                                </div>
+
+                                <div>
+                                  *São obrigatórios o porte e a apresentação de documento de identificação com foto;
+                                </div>
+
+                                <div>
+                                  *Não é permitida a entrada de flores e plantas nos setores de internação (leitos).
+                                </div>
+
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+              </table>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
+    <br><br>
   </table>
-
 </body>
 
 </html>

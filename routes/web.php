@@ -50,6 +50,17 @@ Route::get('/sobre', function () {
     return view('sobre');
 })->middleware('auth');
 
+
+
+
+Route::get('/emailteste', function () {
+    return view('emailteste');
+});
+
+
+
+
+
 Route::get('/faleconosco', function () {
     return view('faleconosco');
 })->middleware('auth');
